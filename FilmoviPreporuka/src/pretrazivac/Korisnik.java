@@ -7,6 +7,7 @@ import pretrazivac.sistemske_operacije.SODodajFilm;
 import pretrazivac.sistemske_operacije.SOObrisiFilm;
 import pretrazivac.sistemske_operacije.SOPretrazi;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
+import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 
 public class Korisnik implements KorisnikInterfejs {
 	private String ime;
@@ -100,6 +101,11 @@ public class Korisnik implements KorisnikInterfejs {
 	public LinkedList<Film> sortirajPoNazivu() {
 		 return SOSortirajPoNazivu.izvrsi(filmovi);
 	}
+	
+	@Override
+	public LinkedList<Film> sortirajPoGodini() {
+		return SOSortirajPoGodini.izvrsi(filmovi);
+	}
 
 	@Override
 	public void ucitajIzFajla(String file) {
@@ -112,13 +118,6 @@ public class Korisnik implements KorisnikInterfejs {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public LinkedList<Film> sortirajPoGodini() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		Korisnik k = (Korisnik) obj;
