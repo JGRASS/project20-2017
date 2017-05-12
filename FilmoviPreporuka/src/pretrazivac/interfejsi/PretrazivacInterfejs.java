@@ -10,7 +10,7 @@ public interface PretrazivacInterfejs {
 	public Korisnik izbaciKorsnika(Korisnik k);
 	public LinkedList<Film> pretrazi(String naziv, int godina, String zanr);
 	public LinkedList<Film> preporuci(Korisnik k);
-	public LinkedList<Film> sortirajPoAbecedi();
+	public LinkedList<Film> sortirajPoNazivu();
 	public LinkedList<Film> sortirajPoGodini();
 	public LinkedList<Film> sortirajPoOceni();
 	public LinkedList<Film> azurirajPoGledanosti();

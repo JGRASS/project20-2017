@@ -3,13 +3,16 @@ package pretrazivac;
 import java.util.LinkedList;
 
 import pretrazivac.interfejsi.KorisnikInterfejs;
+import pretrazivac.sistemske_operacije.SODodajFilm;
+import pretrazivac.sistemske_operacije.SOObrisiFilm;
+import pretrazivac.sistemske_operacije.SOPretrazi;
+import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
 
 public class Korisnik implements KorisnikInterfejs {
 	private String ime;
 	private String prezime;
 	private String username;
 	private String pass;
-	private int brojPreklapanja;
 	private double koeficijent;
 	private LinkedList<Film> filmovi;
 
@@ -69,14 +72,7 @@ public class Korisnik implements KorisnikInterfejs {
 	public void setKoeficijent(double koeficijent) {
 		this.koeficijent = koeficijent;
 	}
-	public int getBrojPreklapanja() {
-		return brojPreklapanja;
-	}
 
-	public void setBrojPreklapanja(int brojPreklapanja) {
-		this.brojPreklapanja = brojPreklapanja;
-	}
-	
 	public LinkedList<Film> getFilmovi() {
 		return filmovi;
 	}
@@ -87,31 +83,22 @@ public class Korisnik implements KorisnikInterfejs {
 	
 	@Override
 	public boolean dodajFilm(Film f) {
-		// TODO Auto-generated method stub
-		return false;
+		return SODodajFilm.izvrsi(f, filmovi);
 	}
 
 	@Override
 	public Film obrisiFilm(Film f) {
-		// TODO Auto-generated method stub
-		return null;
+		return SOObrisiFilm.izvrsi(f, filmovi);
 	}
 
 	@Override
 	public LinkedList<Film> pretrazi(String naziv, int godina, String zanr) {
-		// TODO Auto-generated method stub
-		return null;
+		return SOPretrazi.izvrsi(naziv, godina, zanr, filmovi);
 	}
 	
 	@Override
 	public LinkedList<Film> sortirajPoNazivu() {
-		return null;
-	}
-
-	@Override
-	public LinkedList<Film> sortirajPoZanru() {
-		// TODO Auto-generated method stub
-		return null;
+		 return SOSortirajPoNazivu.izvrsi(filmovi);
 	}
 
 	@Override
@@ -125,4 +112,26 @@ public class Korisnik implements KorisnikInterfejs {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public LinkedList<Film> sortirajPoGodini() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		Korisnik k = (Korisnik) obj;
+		if(k.getUsername().equals(username)){
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "Korisnik [ime=" + ime + ", prezime=" + prezime + ", username=" + username + "]";
+	}
+	
+	
 }
