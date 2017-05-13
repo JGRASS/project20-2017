@@ -35,8 +35,8 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	 * Konstruktor koji inicijalizuje listu filmova i korisnika na preuzete vrednosti iz fajla
 	 */
 	public Pretrazivac() {
-		filmovi = ucitajIzFajla("data/filmovi.dat");
-		korisnici = ucitajKorisnikeIzFajla("data/korisnici.dat");
+		//filmovi = ucitajIzFajla("data/filmovi.dat");
+		//korisnici = ucitajKorisnikeIzFajla("data/korisnici.dat");
 		}
 	
 	/**

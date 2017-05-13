@@ -45,6 +45,9 @@ public class Korisnik implements KorisnikInterfejs {
 	 * @return ime korisnika kao String
 	 */
 
+	public Korisnik() {
+		super();
+	}
 	public Korisnik(String ime, String prezime,String username,String pass) {
 		super();
 		this.ime=ime;
