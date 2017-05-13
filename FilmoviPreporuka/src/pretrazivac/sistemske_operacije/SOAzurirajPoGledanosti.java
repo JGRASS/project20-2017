@@ -6,8 +6,18 @@ import java.util.LinkedList;
 
 import pretrazivac.Film;
 
+/**
+ * Klasa koja predstavlja sistemsku operaciju za metodu szurirajPoGledanosti
+ * @author Jovana Mitrovic
+ *
+ */
 public class SOAzurirajPoGledanosti {
 	
+	/**
+	 * Metoda koja azurira listu filmovi po gledanosti u opadajucem redosledu
+	 * @param filmovi kao parametar prosledjuje listu nasih filmova
+	 * @return vrata listu azuriranih filmova
+	 */
 	public static LinkedList<Film> izvrsi(LinkedList<Film> filmovi) {
 		Collections.sort(filmovi, new Comparator<Film>() {
 			@Override

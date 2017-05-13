@@ -7,7 +7,19 @@ import java.util.LinkedList;
 import pretrazivac.Film;
 import pretrazivac.Korisnik;
 
+/**
+ * Klasa koja predstavlja sistemsku operaciju za metodu preporuci
+ * @author Jovana Mitrovic
+ *
+ */
 public class SOPreporuci {
+	/**
+	 * Metoda koja preporucuje korisniku filmove na osnovu njegovog preklapanja sa ostalim korisnicima
+	 * @param k objekat klase Korisnik kome se preporucuju filmovi
+	 * @param korisnici lista svih korisnika
+	 * @param filmovi lista svih filmova
+	 * @return vraca listu filmova koji se preporucuju
+	 */
 	public static LinkedList<Film> izvrsi(Korisnik k, LinkedList<Korisnik> korisnici, LinkedList<Film> filmovi){
 		int brojac = 0;
 		double odstupanjeOdOcene=0;

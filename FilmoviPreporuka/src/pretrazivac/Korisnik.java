@@ -7,7 +7,6 @@ import pretrazivac.sistemske_operacije.SODodajFilm;
 import pretrazivac.sistemske_operacije.SOObrisiFilm;
 import pretrazivac.sistemske_operacije.SOPretrazi;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
-import pretrazivac.sistemske_operacije.SOUcitajIzFajla;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 
 public class Korisnik implements KorisnikInterfejs {
