@@ -7,7 +7,6 @@ import pretrazivac.sistemske_operacije.SODodajFilm;
 import pretrazivac.sistemske_operacije.SOObrisiFilm;
 import pretrazivac.sistemske_operacije.SOPretrazi;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
-import pretrazivac.sistemske_operacije.SOUcitajIzFajla;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 /**
  * Klasa Korisnik predstavlja domensku klasu sa privatnim atributima i odgovarajucim metodama
@@ -139,8 +138,9 @@ public class Korisnik implements KorisnikInterfejs {
 	 * Metoda postavlja sifru korisnika na unetu vrednost
 	 * @param pass predstavlja sifru korisnika kao String
 	 * @throws RuntimeException
-	 * <ul> kada je uneta sifra null vrednost
-	 * <ul> kada je sifra kraca od 8 znakova
+	 * <ul>
+	 * <li> kada je uneta sifra null vrednost
+	 * <li> kada je sifra kraca od 8 znakova
 	 * </ul>
 	 */
 	public void setPass(String pass) throws RuntimeException{

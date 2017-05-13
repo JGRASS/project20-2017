@@ -6,8 +6,17 @@ import java.util.LinkedList;
 
 import pretrazivac.Film;
 
+/**
+ * Klasa koja predstavlja sistemksu operaciju za metodu sortirajPoOceni
+ * @author Jovana Mitrovic
+ *
+ */
 public class SOSortirajPoOceni {
-	
+	/**
+	 * Meotda koja sortira listu filmova po oceni
+	 * @param filmovi lista filmova koja se sortira
+	 * @return vraca sortiranu listu filmova
+	 */
 	public static LinkedList<Film> izvrsi(LinkedList<Film> filmovi) {
 		Collections.sort(filmovi, new Comparator<Film>() {
 			@Override

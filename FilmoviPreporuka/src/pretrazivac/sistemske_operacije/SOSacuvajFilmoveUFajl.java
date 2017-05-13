@@ -7,8 +7,18 @@ import java.util.LinkedList;
 
 import pretrazivac.Film;
 
+/**
+ * Klasa koja predstavlja sistemsku operaciju za metodu sacuvajFilmoveUFajl
+ * @author Jovana Mitrovic
+ *
+ */
 public class SOSacuvajFilmoveUFajl {
-
+	
+	/**
+	 * Metoda koja cuva listu filmova u fajl
+	 * @param filmovi lista filmova koji se cuvaju u fajl
+	 * @param fajl naziv fajla u kome se cuvaju fimovi
+	 */
 	public static void izvrsi(LinkedList<Film> filmovi, String fajl) {
 		
 		try {

@@ -5,9 +5,17 @@ import java.util.Comparator;
 import java.util.LinkedList;
 
 import pretrazivac.Film;
-
+/**
+ * Klasa koja predstavlja sistemsku operaciju za metodu sortirajPoGodini
+ * @author Jovana Mitrovic
+ *
+ */
 public class SOSortirajPoGodini {
-	
+	/**
+	 * Metoda koja sortira listu filmova po godini
+	 * @param filmovi lista fimova koje se sortira
+	 * @return vraca sortiranu listu filmova
+	 */
 	public static LinkedList<Film> izvrsi(LinkedList<Film> filmovi) {
 		Collections.sort(filmovi, new Comparator<Film>() {
 			@Override
