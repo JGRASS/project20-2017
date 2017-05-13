@@ -31,21 +31,6 @@ public class SignUpEkran extends JFrame {
 	private JLabel lblUspesno;
 	private JButton btnNapraviNalog;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SignUpEkran frame = new SignUpEkran();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
