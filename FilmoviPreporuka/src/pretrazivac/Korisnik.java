@@ -108,17 +108,6 @@ public class Korisnik implements KorisnikInterfejs {
 	}
 
 	@Override
-	public void ucitajIzFajla(String file) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sacuvajUFajl(String file) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
 	public boolean equals(Object obj) {
 		Korisnik k = (Korisnik) obj;
 		if(k.getUsername().equals(username)){

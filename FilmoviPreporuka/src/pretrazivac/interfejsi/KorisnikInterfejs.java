@@ -11,6 +11,4 @@ public interface KorisnikInterfejs {
 	public LinkedList<Film> sortirajPoNazivu();
 	public LinkedList<Film> sortirajPoGodini();
 	
-	public void ucitajIzFajla(String file);
-	public void sacuvajUFajl(String file);
 }
