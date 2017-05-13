@@ -16,25 +16,54 @@ import pretrazivac.sistemske_operacije.SOUbaciKorisnika;
 import pretrazivac.sistemske_operacije.SOUcitajFilmoveIzFajla;
 import pretrazivac.sistemske_operacije.SOUcitajKorisnikeIzFajla;
 
-
+/**
+ * Klasa Pretrazivac predstavlja domensku klasu sa atributima i odgovarajucim metodama
+ * @author ANA
+ *
+ */
 public class Pretrazivac implements PretrazivacInterfejs{
+	/**
+	 * Atribut filmovi predstavlja listu filmova 
+	 */
 	private LinkedList<Film> filmovi;
+	/**
+	 * Atribut korisnici predstavlja listu korisnika
+	 */
 	private LinkedList<Korisnik> korisnici;
 	
+	/**
+	 * Konstruktor koji inicijalizuje listu filmova i korisnika na preuzete vrednosti iz fajla
+	 */
 	public Pretrazivac() {
 		filmovi = ucitajFilmoveIzFajla("data/filmovi");
 		korisnici = ucitajKorisnikeIzFajla("data/korisnici");
 	}
 	
+	/**
+	 * Metoda vraca listu filmova
+	 * @return listu filmova
+	 */
 	public LinkedList<Film> getFilmovi() {
 		return filmovi;
 	}
+	/**
+	 * Metoda postavlja listu filmova na unetu vrednost
+	 * @param filmovi predstavlja listu filmova
+	 */
 	public void setFilmovi(LinkedList<Film> filmovi) {
 		this.filmovi = filmovi;
 	}
+	/**
+	 * Metoda vraca listu korisnika
+	 * @return listu korisnika
+	 */
 	public LinkedList<Korisnik> getKorisnici() {
 		return korisnici;
 	}
+	/**
+	 * Metoda postavlja listu korisnika na unetu vrednost
+	 * @param korisnici predstavlja listu korisnika
+	 */
 	public void setKorisnici(LinkedList<Korisnik> korisnici) {
 		this.korisnici = korisnici;
 	}
