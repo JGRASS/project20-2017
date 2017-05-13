@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import pretrazivac.interfejsi.PretrazivacInterfejs;
 import pretrazivac.sistemske_operacije.SOPreporuci;
 import pretrazivac.sistemske_operacije.SOPretrazi;
+import pretrazivac.sistemske_operacije.SOSacuvajFilmoveUFajl;
+import pretrazivac.sistemske_operacije.SOSacuvajKorisnikeUFajl;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
 import pretrazivac.sistemske_operacije.SOAzurirajPoGledanosti;
 import pretrazivac.sistemske_operacije.SOIzbaciKorisnika;
@@ -110,14 +112,12 @@ public class Pretrazivac implements PretrazivacInterfejs{
 
 	@Override
 	public void sacuvajFilmoveUFajl(String fajl) {
-		// TODO Auto-generated method stub
-		
+		SOSacuvajFilmoveUFajl.izvrsi(filmovi, fajl);
 	}
 
 	@Override
 	public void sacuvajKorisnikeUFajl(String fajl) {
-		// TODO Auto-generated method stub
-		
+		SOSacuvajKorisnikeUFajl.izvrsi(korisnici, fajl);
 	}
 
 }
