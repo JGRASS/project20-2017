@@ -72,6 +72,20 @@ public class Film {
 		}
 		this.trailerpath = trailerpath;
 	}
-
+	
+	@Override
+	public boolean equals(Object obj) {
+		Film f = (Film) obj;
+		if(f.getGodina()==godina && f.getNaziv().equals(naziv) && f.getZanr().equals(zanr)){
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "Film [naziv=" + naziv + ", zanr=" + zanr + ", godina=" + godina + ", ocena=" + ocena + ", brojPregleda="
+				+ brojPregleda + "]";
+	}
 
 }

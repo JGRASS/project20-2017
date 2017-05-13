@@ -3,11 +3,15 @@ package pretrazivac;
 import java.util.LinkedList;
 
 import pretrazivac.interfejsi.PretrazivacInterfejs;
+import pretrazivac.sistemske_operacije.SOPreporuci;
+import pretrazivac.sistemske_operacije.SOPretrazi;
+import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
 import pretrazivac.sistemske_operacije.SOAzurirajPoGledanosti;
 import pretrazivac.sistemske_operacije.SOIzbaciKorisnika;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 import pretrazivac.sistemske_operacije.SOSortirajPoOceni;
 import pretrazivac.sistemske_operacije.SOUbaciKorisnika;
+
 
 public class Pretrazivac implements PretrazivacInterfejs{
 	private LinkedList<Film> filmovi;
@@ -40,18 +44,15 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	}
 	@Override
 	public LinkedList<Film> pretrazi(String naziv, int godina, String zanr) {
-		// TODO Auto-generated method stub
-		return null;
+		return SOPretrazi.izvrsi(naziv, godina, zanr, filmovi);
 	}
 	@Override
 	public LinkedList<Film> preporuci(Korisnik k) {
-		// TODO Auto-generated method stub
-		return null;
+		return SOPreporuci.izvrsi(k, korisnici, filmovi);
 	}
 	@Override
 	public LinkedList<Film> sortirajPoNazivu() {
-		// TODO Auto-generated method stub
-		return null;
+		return SOSortirajPoNazivu.izvrsi(filmovi);
 	}
 	@Override
 	public LinkedList<Film> sortirajPoGodini() {
@@ -89,5 +90,5 @@ public class Pretrazivac implements PretrazivacInterfejs{
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 }
