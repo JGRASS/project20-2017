@@ -51,11 +51,12 @@ public class SOPreporuci {
 		
 		for(int i=0;i<korisnici.size();i++){
 			for(int j=0;j<korisnici.get(i).getFilmovi().size();j++){
-				if(korisnici.get(i).getKoeficijent()!= 0 && k.getFilmovi().contains(korisnici.get(i).getFilmovi().get(j))==false){
+				if(korisnici.get(i).getKoeficijent()!= 0 && k.getFilmovi().contains(korisnici.get(i).getFilmovi().get(j))==false
+						&& pomocna.contains(korisnici.get(i).getFilmovi().get(j))==false && pomocna.size()<10){
 					pomocna.add(korisnici.get(i).getFilmovi().get(j));
 				}
 			}
-			if(pomocna.isEmpty()==false){
+			if(pomocna.size()==10){
 				break;
 			}
 		}

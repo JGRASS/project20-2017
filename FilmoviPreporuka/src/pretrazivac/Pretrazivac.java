@@ -11,6 +11,8 @@ import pretrazivac.sistemske_operacije.SOIzbaciKorisnika;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 import pretrazivac.sistemske_operacije.SOSortirajPoOceni;
 import pretrazivac.sistemske_operacije.SOUbaciKorisnika;
+import pretrazivac.sistemske_operacije.SOUcitajIzFajla;
+import pretrazivac.sistemske_operacije.SOUcitajKorisnikeIzFajla;
 
 
 public class Pretrazivac implements PretrazivacInterfejs{
@@ -18,7 +20,7 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	private LinkedList<Korisnik> korisnici;
 	
 	public Pretrazivac() {
-		filmovi = ucitajFilmoveIzFajla("data/filmovi");
+		filmovi = ucitajIzFajla("data/filmovi");
 		korisnici = ucitajKorisnikeIzFajla("data/korisnici");
 	}
 	
@@ -68,15 +70,13 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	}
 
 	@Override
-	public LinkedList<Film> ucitajFilmoveIzFajla(String fajl) {
-		// TODO Auto-generated method stub
-		return null;
+	public LinkedList<Film> ucitajIzFajla(String fajl) {
+		return SOUcitajIzFajla.izvrsi(fajl, filmovi);
 	}
 
 	@Override
 	public LinkedList<Korisnik> ucitajKorisnikeIzFajla(String fajl) {
-		// TODO Auto-generated method stub
-		return null;
+		return SOUcitajKorisnikeIzFajla.izvrsi(fajl, korisnici);
 	}
 
 	@Override
