@@ -72,12 +72,6 @@ public class Film {
 		}
 		this.trailerpath = trailerpath;
 	}
-	@Override
-	public String toString() {
-		return "Film [ocena=" + ocena + "]";
-	}
-	
-	
-	
-	
+
+
 }
