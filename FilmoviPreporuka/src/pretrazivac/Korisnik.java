@@ -44,6 +44,17 @@ public class Korisnik implements KorisnikInterfejs {
 	 * Metoda vraca ime korisnika
 	 * @return ime korisnika kao String
 	 */
+
+	public Korisnik(String ime, String prezime,String username,String pass) {
+		super();
+		this.ime=ime;
+		this.prezime=prezime;
+		this.username=username;
+		this.pass=pass;
+		this.koeficijent=0;
+		this.filmovi=null;
+	}
+	
 	public String getIme() {
 		return ime;
 	}
@@ -57,7 +68,7 @@ public class Korisnik implements KorisnikInterfejs {
 	 * </ul>
 	 */
 	public void setIme(String ime) throws RuntimeException{
-		if(ime == null) {
+		if(ime == null || ime.equals("")) {
 			throw new RuntimeException("Niste uneli ime!");
 		}
 		this.ime = ime;
@@ -80,7 +91,7 @@ public class Korisnik implements KorisnikInterfejs {
 	 * </ul>
 	 */
 	public void setPrezime(String prezime) throws RuntimeException{
-		if(prezime == null) {
+		if(prezime == null || prezime.equals("")) {
 			throw new RuntimeException("Niste uneli prezime!");
 		}
 		this.prezime = prezime;
@@ -104,7 +115,7 @@ public class Korisnik implements KorisnikInterfejs {
 	 * </ul>
 	 */
 	public void setUsername(String username) throws RuntimeException {
-		if(username == null) {
+		if(username == null || username.equals("")) {
 			throw new RuntimeException("Niste uneli username!");
 		}
 		if(username.contains(" ")) {
@@ -130,7 +141,7 @@ public class Korisnik implements KorisnikInterfejs {
 	 * </ul>
 	 */
 	public void setPass(String pass) throws RuntimeException{
-		if(pass == null) {
+		if(pass == null || pass.equals("")) {
 			throw new RuntimeException("Niste uneli sifru!");
 		}
 		if(pass.length() < 8) {
@@ -198,7 +209,8 @@ public class Korisnik implements KorisnikInterfejs {
 	@Override
 	public boolean equals(Object obj) {
 		Korisnik k = (Korisnik) obj;
-		if(k.getUsername().equalsIgnoreCase(username)){
+
+		if(k.getUsername().equals(username) && k.getPass().equals(pass)){
 			return true;
 		}
 		return false;
