@@ -1,6 +1,8 @@
 package pretrazivac.gui;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
@@ -11,9 +13,6 @@ import javax.swing.JOptionPane;
 import pretrazivac.Film;
 import pretrazivac.Korisnik;
 import pretrazivac.Pretrazivac;
-import pretrazivac.gui.KorisnikEkran;
-import pretrazivac.gui.Login;
-import pretrazivac.gui.PocetniEkran;
 import pretrazivac.gui.*;
 
 
@@ -150,8 +149,8 @@ public class GuiControler {
 					Korisnik k1 = new Korisnik();
 					k1.setIme("Ana");
 					k1.setPrezime("C");
-					k1.setPass("adasdddsdsds");
-					k1.setUsername("jkjdk");
+					k1.setPass("anacolovic");
+					k1.setUsername("anacolovic");
 					k1.setKoeficijent(0);
 					k1.setFilmovi(filmovi1);
 					korisnici.add(k1);
@@ -160,7 +159,7 @@ public class GuiControler {
 					k2.setIme("Ana");
 					k2.setPrezime("C");
 					k2.setPass("adasksjdksdksd");
-					k2.setUsername("jkjdk");
+					k2.setUsername("jjjjjjjjjjjjjjjj");
 					k2.setKoeficijent(0);
 					k2.setFilmovi(filmovi2);
 					korisnici.add(k2);
@@ -169,7 +168,7 @@ public class GuiControler {
 					k3.setIme("Ana");
 					k3.setPrezime("C");
 					k3.setPass("adasdjdfdkf");
-					k3.setUsername("jkjdk");
+					k3.setUsername("jjjjjjjjjjj");
 					k3.setKoeficijent(0);
 					k3.setFilmovi(filmovi3);
 					korisnici.add(k3);
@@ -178,14 +177,39 @@ public class GuiControler {
 					k4.setIme("Ana");
 					k4.setPrezime("C");
 					k4.setPass("adkfjkdfdasd");
-					k4.setUsername("jkjdk");
+					k4.setUsername("jjjjjjjjjjjjjjjjjj");
 					k4.setKoeficijent(0);
 					k4.setFilmovi(filmovi4);
 					korisnici.add(k4);
-					
+					LinkedList<Film> filmovi=new LinkedList<>();
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
+					filmovi.add(f2);
+					filmovi.add(f1);
+					filmovi.add(f3);
+					filmovi.add(f4);
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
 
 					pr=new Pretrazivac();
 					pr.setKorisnici(korisnici);
+					pr.setFilmovi(filmovi);
 					log= new Login();
 					log.setVisible(true);
 				} catch (Exception e) {
@@ -206,6 +230,7 @@ public class GuiControler {
 				
 			}
 		});
+		napuniPocetniPanelFilmovima();
 	}
 	public static void ugasiPocetniEkran(){
 		log.setVisible(true);
@@ -243,8 +268,8 @@ public class GuiControler {
 		ke.setVisible(true);
 		kf.dispose();
 	}
-	public static void pokreniFilmEkran(){
-		fe=new FilmEkran();
+	public static void pokreniFilmEkran(Film film){
+		fe=new FilmEkran(film);
 		fe.setVisible(true);
 		pe.setVisible(false);
 		fe.addWindowListener(new WindowAdapter() {
@@ -278,10 +303,11 @@ public class GuiControler {
 	public static void ulogujKorisnika(String username,String pass){
 		ulogovanKorisnik=null;
 		try{
-		for(Korisnik k:pr.getKorisnici()){
-			if(k.getUsername().equals(username) && k.getPass().equals(pass))
-				ulogovanKorisnik=k;
-				
+		for(int i=0;i<pr.getKorisnici().size();i++){
+			if(pr.getKorisnici().get(i).getUsername().equals(username) && pr.getKorisnici().get(i).getPass().equals(pass)){
+				ulogovanKorisnik=pr.getKorisnici().get(i);
+				break;
+			}
 		}
 		if(ulogovanKorisnik==null)
 			throw new RuntimeException();
@@ -305,6 +331,18 @@ public class GuiControler {
 		}
 		
 
+	}
+	public static void napuniPocetniPanelFilmovima(){
+		for(int i=0;i<pr.getFilmovi().size();i++){
+			PristupFilmu d=new PristupFilmu(pr.getFilmovi().get(i));
+			d.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pokreniFilmEkran(d.getFilm());
+				}
+			});
+			pe.dodajDugme(d);
+		}
+		
 	}
 	
 }

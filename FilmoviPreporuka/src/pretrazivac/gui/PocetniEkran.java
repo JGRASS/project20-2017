@@ -2,10 +2,15 @@ package pretrazivac.gui;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+
 import java.awt.Dimension;
 import javax.swing.JScrollPane;
 import net.miginfocom.swing.MigLayout;
@@ -27,6 +32,7 @@ public class PocetniEkran extends JFrame {
 		contentPane.add(getPanel());
 		contentPane.add(getPanel_1());
 		setResizable(false);
+		
 	}
 	private JPanel getPanel() {
 		if (panel == null) {
@@ -52,11 +58,18 @@ public class PocetniEkran extends JFrame {
 		}
 		return scrollPane;
 	}
-	private JPanel getPanel_2() {
+	public JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
-			panel_2.setLayout(new MigLayout("", "[]", "[]"));
+			panel_2.setLayout(new MigLayout("insets 0, wrap 8", "0[]0","0[]0"));			
+
 		}
 		return panel_2;
 	}
+	public void dodajDugme(PristupFilmu p){
+		this.panel_2.add(p);
+		p.setVisible(true);
+
+	}
+
 }

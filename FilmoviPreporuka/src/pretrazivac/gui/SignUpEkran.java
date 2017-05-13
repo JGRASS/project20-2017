@@ -154,7 +154,7 @@ public class SignUpEkran extends JFrame {
 			btnNapraviNalog.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					GuiControler.napraviNoviNalog(textField.getText(),textField_1.getText(), textField_2.getText(), textField_3.getText());
-					//lblUspesno.setVisible(true);
+					lblUspesno.setVisible(true);
 				}
 			});
 			btnNapraviNalog.setBounds(520, 652, 148, 25);
