@@ -3,6 +3,11 @@ package pretrazivac;
 import java.util.LinkedList;
 
 import pretrazivac.interfejsi.PretrazivacInterfejs;
+import pretrazivac.sistemske_operacije.SOAzurirajPoGledanosti;
+import pretrazivac.sistemske_operacije.SOIzbaciKorisnika;
+import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
+import pretrazivac.sistemske_operacije.SOSortirajPoOceni;
+import pretrazivac.sistemske_operacije.SOUbaciKorisnika;
 
 public class Pretrazivac implements PretrazivacInterfejs{
 	private LinkedList<Film> filmovi;
@@ -27,13 +32,11 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	}
 	@Override
 	public boolean ubaciKorisnika(Korisnik k) {
-		// TODO Auto-generated method stub
-		return false;
+		return SOUbaciKorisnika.izvrsi(korisnici, k);
 	}
 	@Override
 	public Korisnik izbaciKorsnika(Korisnik k) {
-		// TODO Auto-generated method stub
-		return null;
+		return SOIzbaciKorisnika.izvrsi(korisnici, k);
 	}
 	@Override
 	public LinkedList<Film> pretrazi(String naziv, int godina, String zanr) {
@@ -46,24 +49,21 @@ public class Pretrazivac implements PretrazivacInterfejs{
 		return null;
 	}
 	@Override
-	public LinkedList<Film> sortirajPoAbecedi() {
+	public LinkedList<Film> sortirajPoNazivu() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public LinkedList<Film> sortirajPoGodini() {
-		// TODO Auto-generated method stub
-		return null;
+		return SOSortirajPoGodini.izvrsi(filmovi);
 	}
 	@Override
 	public LinkedList<Film> sortirajPoOceni() {
-		// TODO Auto-generated method stub
-		return null;
+		return SOSortirajPoOceni.izvrsi(filmovi);
 	}
 	@Override
 	public LinkedList<Film> azurirajPoGledanosti() {
-		// TODO Auto-generated method stub
-		return null;
+		return SOAzurirajPoGledanosti.izvrsi(filmovi);
 	}
 
 	@Override
@@ -89,4 +89,5 @@ public class Pretrazivac implements PretrazivacInterfejs{
 		// TODO Auto-generated method stub
 		
 	}
+	
 }

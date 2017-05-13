@@ -3,6 +3,7 @@ package pretrazivac;
 import java.util.LinkedList;
 
 import pretrazivac.interfejsi.KorisnikInterfejs;
+import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 
 public class Korisnik implements KorisnikInterfejs {
 	private String ime;
@@ -107,11 +108,10 @@ public class Korisnik implements KorisnikInterfejs {
 	public LinkedList<Film> sortirajPoNazivu() {
 		return null;
 	}
-
+	
 	@Override
-	public LinkedList<Film> sortirajPoZanru() {
-		// TODO Auto-generated method stub
-		return null;
+	public LinkedList<Film> sortirajPoGodini() {
+		return SOSortirajPoGodini.izvrsi(filmovi);
 	}
 
 	@Override

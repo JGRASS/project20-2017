@@ -9,7 +9,7 @@ public interface KorisnikInterfejs {
 	public Film obrisiFilm(Film f);
 	public LinkedList<Film> pretrazi(String naziv, int godina, String zanr);
 	public LinkedList<Film> sortirajPoNazivu();
-	public LinkedList<Film> sortirajPoZanru();
+	public LinkedList<Film> sortirajPoGodini();
 	
 	public void ucitajIzFajla(String file);
 	public void sacuvajUFajl(String file);
