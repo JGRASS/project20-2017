@@ -15,7 +15,7 @@ public interface PretrazivacInterfejs {
 	public LinkedList<Film> sortirajPoOceni();
 	public LinkedList<Film> azurirajPoGledanosti();
 	
-	public LinkedList<Film> ucitajFilmoveIzFajla(String fajl);
+	public LinkedList<Film> ucitajIzFajla(String fajl);
 	public LinkedList<Korisnik> ucitajKorisnikeIzFajla(String fajl);
 	public void sacuvajFilmoveUFajl(String fajl);
 	public void sacuvajKorisnikeUFajl(String fajl);

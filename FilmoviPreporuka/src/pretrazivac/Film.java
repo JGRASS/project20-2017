@@ -76,7 +76,7 @@ public class Film {
 	@Override
 	public boolean equals(Object obj) {
 		Film f = (Film) obj;
-		if(f.getGodina()==godina && f.getNaziv().equals(naziv) && f.getZanr().equals(zanr)){
+		if(f.getGodina()==godina && f.getNaziv().equalsIgnoreCase(naziv) && f.getZanr().equals(zanr)){
 			return true;
 		}
 		return false;

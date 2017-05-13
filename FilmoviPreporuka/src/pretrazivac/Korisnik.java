@@ -7,6 +7,7 @@ import pretrazivac.sistemske_operacije.SODodajFilm;
 import pretrazivac.sistemske_operacije.SOObrisiFilm;
 import pretrazivac.sistemske_operacije.SOPretrazi;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
+import pretrazivac.sistemske_operacije.SOUcitajIzFajla;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 
 public class Korisnik implements KorisnikInterfejs {
@@ -110,7 +111,7 @@ public class Korisnik implements KorisnikInterfejs {
 	@Override
 	public boolean equals(Object obj) {
 		Korisnik k = (Korisnik) obj;
-		if(k.getUsername().equals(username)){
+		if(k.getUsername().equalsIgnoreCase(username)){
 			return true;
 		}
 		return false;
