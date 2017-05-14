@@ -43,10 +43,10 @@ public class GuiControler {
 				
 					
 					Film f1 = new Film();
-					f1.setNaziv("a");
+					f1.setNaziv("The Matrix");
 					f1.setGodina(2015);
 					f1.setBrojPregleda(5);
-					f1.setImagepath("E:\\data\\output\\film001.jpg");
+					f1.setImagepath("/images/TheMatrix.jpg");
 					f1.setOcena(7);
 					f1.setZanr("fa");
 					f1.setTrailerpath("faf");
@@ -54,30 +54,30 @@ public class GuiControler {
 					
 					
 					Film f2 = new Film();
-					f2.setNaziv("b");
+					f2.setNaziv("Memento");
 					f2.setGodina(2013);
 					f2.setBrojPregleda(2);
-					f2.setImagepath("E:\\data\\output\\film002.jpg");
+					f2.setImagepath("/images/Memento.jpg");
 					f2.setOcena(8);
 					f2.setZanr("fa");
 					f2.setTrailerpath("faf");
 					filmovi1.add(f2);
 					
 					Film f3 = new Film();
-					f3.setNaziv("fa");
+					f3.setNaziv("Die Hard");
 					f3.setGodina(2014);
 					f3.setBrojPregleda(1);
-					f3.setImagepath("E:\\data\\output\\film005.jpg");
+					f3.setImagepath("/images/DieHard.jpg");
 					f3.setOcena(5);
 					f3.setZanr("fa");
 					f3.setTrailerpath("faf");
 					filmovi2.add(f3);
 					
 					Film f4 = new Film();
-					f4.setNaziv("gaga");
+					f4.setNaziv("Deadpool");
 					f4.setGodina(2015);
 					f4.setBrojPregleda(3);
-					f4.setImagepath("E:\\data\\output\\film004.jpg");
+					f4.setImagepath("/images/Deadpool.jpg");
 					f4.setOcena(3);
 					f4.setZanr("fa");
 					f4.setTrailerpath("faf");

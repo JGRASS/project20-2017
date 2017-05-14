@@ -16,7 +16,7 @@ public class PristupFilmu extends JButton {
 		this.setMinimumSize(new Dimension(140, 221));
 		this.setMaximumSize(new Dimension(150, 221));
 		this.setText(film.getNaziv());
-		this.setIcon(new ImageIcon(film.getImagepath()));
+		this.setIcon(new ImageIcon(KorisnikEkran.class.getResource(film.getImagepath())));
 		this.setSize(new Dimension(150, 221));
 		this.setText(null);
 		this.setOpaque(true);

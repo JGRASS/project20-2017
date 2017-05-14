@@ -36,8 +36,9 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	 */
 	public Pretrazivac() {
 
-		//filmovi = ucitajFilmoveIzFajla("data/filmovi");
-		//korisnici = ucitajKorisnikeIzFajla("data/korisnici");
+//		filmovi = ucitajFilmoveIzFajla("/resource/filmovi.out");
+//		korisnici = ucitajKorisnikeIzFajla("/korisnici.out");
+//	
 	}
 	
 	/**
