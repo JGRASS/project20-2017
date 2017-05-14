@@ -196,5 +196,5 @@ public class Film implements Serializable{
 		return "Film [naziv=" + naziv + ", zanr=" + zanr + ", godina=" + godina + ", ocena=" + ocena + ", brojPregleda="
 				+ brojPregleda + "]";
 	}
-
+	
 }

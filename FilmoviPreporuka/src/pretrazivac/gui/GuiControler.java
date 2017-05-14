@@ -45,7 +45,7 @@ public class GuiControler {
 					Film f1 = new Film();
 					f1.setNaziv("a");
 					f1.setGodina(2015);
-					f1.setBrojPregleda(1);
+					f1.setBrojPregleda(5);
 					f1.setImagepath("E:\\data\\output\\film001.jpg");
 					f1.setOcena(7);
 					f1.setZanr("fa");
@@ -56,7 +56,7 @@ public class GuiControler {
 					Film f2 = new Film();
 					f2.setNaziv("b");
 					f2.setGodina(2013);
-					f2.setBrojPregleda(1);
+					f2.setBrojPregleda(2);
 					f2.setImagepath("E:\\data\\output\\film002.jpg");
 					f2.setOcena(8);
 					f2.setZanr("fa");
@@ -76,7 +76,7 @@ public class GuiControler {
 					Film f4 = new Film();
 					f4.setNaziv("gaga");
 					f4.setGodina(2015);
-					f4.setBrojPregleda(1);
+					f4.setBrojPregleda(3);
 					f4.setImagepath("E:\\data\\output\\film004.jpg");
 					f4.setOcena(3);
 					f4.setZanr("fa");
@@ -360,6 +360,26 @@ public class GuiControler {
 			pe.dodajDugme(d);
 		}
 		
+	}
+	public static void sortirajListuPoGledanosti(){
+		pr.setFilmovi(pr.azurirajPoGledanosti());
+		ugasiPocetniEkran();
+		pokreniPocetniEkran();
+	}
+	public static void sortirajListuPoNazivu(){
+		pr.setFilmovi(pr.sortirajPoNazivu());
+		ugasiPocetniEkran();
+		pokreniPocetniEkran();
+	}
+	public static void sortirajListuPoGodini(){
+		pr.setFilmovi(pr.sortirajPoGodini());
+		ugasiPocetniEkran();
+		pokreniPocetniEkran();
+	}
+	public static void sortirajListuPoOceni(){
+		pr.setFilmovi(pr.sortirajPoOceni());
+		ugasiPocetniEkran();
+		pokreniPocetniEkran();
 	}
 	
 }
