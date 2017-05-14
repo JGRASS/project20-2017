@@ -18,7 +18,7 @@ import pretrazivac.sistemske_operacije.SOUcitajKorisnikeIzFajla;
 
 /**
  * Klasa Pretrazivac predstavlja domensku klasu sa atributima i odgovarajucim metodama
- * @author ANA
+ * @author Ana Colovic
  *
  */
 public class Pretrazivac implements PretrazivacInterfejs{
