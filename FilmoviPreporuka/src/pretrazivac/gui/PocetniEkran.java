@@ -262,8 +262,5 @@ public class PocetniEkran extends JFrame {
 		}
 		return label;
 	}
-	public void noviPanel_2(){
-		panel=null;
-		contentPane.add(getPanel());
-	}
+
 }
