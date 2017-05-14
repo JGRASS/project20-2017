@@ -46,7 +46,7 @@ public class GuiControler {
 					f1.setNaziv("a");
 					f1.setGodina(2015);
 					f1.setBrojPregleda(1);
-					f1.setImagepath("faef");
+					f1.setImagepath("E:\\data\\output\\film001.jpg");
 					f1.setOcena(7);
 					f1.setZanr("fa");
 					f1.setTrailerpath("faf");
@@ -57,7 +57,7 @@ public class GuiControler {
 					f2.setNaziv("b");
 					f2.setGodina(2013);
 					f2.setBrojPregleda(1);
-					f2.setImagepath("faef");
+					f2.setImagepath("E:\\data\\output\\film002.jpg");
 					f2.setOcena(8);
 					f2.setZanr("fa");
 					f2.setTrailerpath("faf");
@@ -67,7 +67,7 @@ public class GuiControler {
 					f3.setNaziv("fa");
 					f3.setGodina(2014);
 					f3.setBrojPregleda(1);
-					f3.setImagepath("faef");
+					f3.setImagepath("E:\\data\\output\\film005.jpg");
 					f3.setOcena(5);
 					f3.setZanr("fa");
 					f3.setTrailerpath("faf");
@@ -77,7 +77,7 @@ public class GuiControler {
 					f4.setNaziv("gaga");
 					f4.setGodina(2015);
 					f4.setBrojPregleda(1);
-					f4.setImagepath("faef");
+					f4.setImagepath("E:\\data\\output\\film004.jpg");
 					f4.setOcena(3);
 					f4.setZanr("fa");
 					f4.setTrailerpath("faf");
@@ -206,6 +206,22 @@ public class GuiControler {
 					filmovi.add(f2);
 					filmovi.add(f3);
 					filmovi.add(f4);
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
+					filmovi.add(f1);
+					filmovi.add(f2);
+					filmovi.add(f3);
+					filmovi.add(f4);
 
 					pr=new Pretrazivac();
 					pr.setKorisnici(korisnici);
@@ -314,6 +330,7 @@ public class GuiControler {
 		}catch (RuntimeException e){
 			log.postaviPrazan();
 			JOptionPane.showMessageDialog(log, "Uneli ste pogresan username ili password","Login Greska", JOptionPane.ERROR_MESSAGE);
+			return;
 		}
 		pokreniPocetniEkran();
 	}
