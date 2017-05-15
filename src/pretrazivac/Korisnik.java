@@ -215,7 +215,7 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 	public boolean equals(Object obj) {
 		Korisnik k = (Korisnik) obj;
 
-		if(k.getUsername().equals(username) && k.getPass().equals(pass)){
+		if(k.getUsername().equalsIgnoreCase(username) || (k.getUsername().equalsIgnoreCase(username) && k.getPass().equals(pass))){
 			return true;
 		}
 		return false;
