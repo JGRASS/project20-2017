@@ -43,7 +43,7 @@ public class Pretrazivac implements PretrazivacInterfejs{
 		filmovi = ucitajFilmoveIzFajla(Pretrazivac.class.getResource("/filmovi.out").getPath());
 		//korisnici = ucitajKorisnikeIzFajla("/korisnici.out");
 	}
-		
+
 	/**
 	 * Metoda vraca listu filmova
 	 * @return listu filmova
@@ -123,6 +123,7 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	@Override
 	public void sacuvajKorisnikeUFajl(String fajl) {
 		SOSacuvajKorisnikeUFajl.izvrsi(korisnici, fajl);
+		
 	}
 	
 }
