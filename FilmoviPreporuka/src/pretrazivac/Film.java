@@ -1,14 +1,14 @@
 package pretrazivac;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 /**
- * 
- * @author ANA
  * Klasa Film predstavlja domensku klasu koja sadrzi atribute Filma i njegove gettere i settere
+ * @author Ana Colovic
  *
  */
-public class Film {
+public class Film implements Serializable{
 	/**
 	 * Atribut naziv predstavlja naziv filma
 	 */

@@ -1,5 +1,6 @@
 package pretrazivac;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 import pretrazivac.interfejsi.KorisnikInterfejs;
@@ -10,10 +11,10 @@ import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 /**
  * Klasa Korisnik predstavlja domensku klasu sa privatnim atributima i odgovarajucim metodama
- * @author ANA
+ * @author Ana Colovic
  *
  */
-public class Korisnik implements KorisnikInterfejs {
+public class Korisnik implements KorisnikInterfejs, Serializable{
 	/**
 	 * Atribut ime predstavlja ime korisnika
 	 */
@@ -38,7 +39,10 @@ public class Korisnik implements KorisnikInterfejs {
 	 * Atribut filmovi predstavlja listu filmova korisnika
 	 */
 	private LinkedList<Film> filmovi;
-
+	
+	public Korisnik() {
+		filmovi = new LinkedList<Film>();
+	}
 	/**
 	 * Metoda vraca ime korisnika
 	 * @return ime korisnika kao String

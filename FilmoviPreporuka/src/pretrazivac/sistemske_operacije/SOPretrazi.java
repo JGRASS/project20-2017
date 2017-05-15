@@ -23,8 +23,8 @@ public class SOPretrazi {
 		LinkedList<Film> pomocna = new LinkedList<>();
 		
 		for(int i=0;i<filmovi.size();i++){
-			if(naziv.equals(filmovi.get(i).getNaziv()) || godina==filmovi.get(i).getGodina() || 
-					zanr.equals(filmovi.get(i).getZanr())){
+			if((naziv!=null && filmovi.get(i).getNaziv().contains(naziv)) || godina==filmovi.get(i).getGodina() || 
+					(zanr!=null && filmovi.get(i).getZanr().contains(zanr))){
 				pomocna.add(filmovi.get(i));
 			}
 		}
