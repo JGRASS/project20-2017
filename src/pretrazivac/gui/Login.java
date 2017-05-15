@@ -113,7 +113,7 @@ public class Login extends JFrame {
 			btnLogin.setBorderPainted(false);
 			btnLogin.setForeground(Color.WHITE);
 			btnLogin.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 23));
-			btnLogin.setIcon(new ImageIcon("E:\\data\\output\\login (1).png"));
+			btnLogin.setIcon(new ImageIcon("/images/login (1).png"));
 			btnLogin.setFocusPainted(false);
 			btnLogin.setContentAreaFilled(false);
 			btnLogin.addActionListener(new ActionListener() {
@@ -139,7 +139,7 @@ public class Login extends JFrame {
 			btnSignUp.setOpaque(false);
 			btnSignUp.setForeground(Color.LIGHT_GRAY);
 			btnSignUp.setContentAreaFilled(false);
-			btnSignUp.setIcon(new ImageIcon("E:\\data\\output\\round-account-button-with-user-inside.png"));
+			btnSignUp.setIcon(new ImageIcon("/images/round-account-button-with-user-inside.png"));
 			btnSignUp.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 15));
 			btnSignUp.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
@@ -162,7 +162,9 @@ public class Login extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
-			label.setIcon(new ImageIcon(Login.class.getResource("/images/loginBack.png")));
+
+			label.setIcon(new ImageIcon("/images/loginBack.png"));
+
 			label.setBounds(0, 0, 1194, 865);
 		}
 		return label;
@@ -171,7 +173,7 @@ public class Login extends JFrame {
 		if (lblIcon == null) {
 			lblIcon = new JLabel("");
 			lblIcon.setHorizontalAlignment(SwingConstants.CENTER);
-			lblIcon.setIcon(new ImageIcon("E:\\data\\output\\account (1).png"));
+			lblIcon.setIcon(new ImageIcon("/images/account (1).png"));
 			lblIcon.setBounds(549, 178, 73, 105);
 		}
 		return lblIcon;

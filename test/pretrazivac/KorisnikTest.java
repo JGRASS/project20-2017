@@ -401,4 +401,14 @@ public class KorisnikTest {
 		assertFalse(k.equals(korisnik));
 	}
 	
+	@Test
+	public void testEqualsIsti(){
+		k.setUsername("anacolovic");
+		k.setPass("anacolovic");
+		Korisnik korisnik = new Korisnik();
+		korisnik.setUsername("anaColovic");
+		korisnik.setPass("anacolovic");
+		assertTrue(k.equals(korisnik));
+	}
+	
 }

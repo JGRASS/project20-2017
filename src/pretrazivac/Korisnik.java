@@ -40,6 +40,7 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 	 */
 	private LinkedList<Film> filmovi;
 	
+	
 	public Korisnik() {
 		super();
 		filmovi = new LinkedList<Film>();
@@ -56,7 +57,7 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 		setUsername(username);
 		setPass(pass);
 		this.koeficijent=0;
-		this.filmovi=null;
+		this.filmovi= new LinkedList<Film>();
 	}
 	
 	public String getIme() {
@@ -215,7 +216,7 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 	public boolean equals(Object obj) {
 		Korisnik k = (Korisnik) obj;
 
-		if(k.getUsername().equals(username) && k.getPass().equals(pass)){
+		if(k.getUsername().equalsIgnoreCase(username) || (k.getUsername().equalsIgnoreCase(username) && k.getPass().equals(pass))){
 			return true;
 		}
 		return false;
