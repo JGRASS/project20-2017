@@ -47,6 +47,7 @@ public class FilmEkran extends JFrame {
 	private JLabel getLblSlika() {
 		if (lblSlika == null) {
 			lblSlika = new Slika();
+			System.out.println("|"+film.getNaziv()+film.getImagepath());
 			lblSlika.setIcon(new ImageIcon(FilmEkran.class.getResource("/images/"+film.getNaziv().replaceAll(" ", "")+"1.jpg")));
 			lblSlika.setBounds(183, 222, 250, 369);
 		}

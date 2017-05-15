@@ -150,6 +150,7 @@ public class PocetniEkran extends JFrame {
 			scrollPane.getVerticalScrollBar().setBorder(null);
 			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 			scrollPane.setViewportView(getPanel_2());
+			scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 		}
 		return scrollPane;
 	}
