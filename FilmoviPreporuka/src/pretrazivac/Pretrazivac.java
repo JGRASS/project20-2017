@@ -1,5 +1,8 @@
 package pretrazivac;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
 import pretrazivac.interfejsi.PretrazivacInterfejs;
@@ -35,8 +38,8 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	 * Konstruktor koji inicijalizuje listu filmova i korisnika na preuzete vrednosti iz fajla
 	 */
 	public Pretrazivac() {
-		filmovi = ucitajFilmoveIzFajla("data/filmovi");
-		korisnici = ucitajKorisnikeIzFajla("data/korisnici");
+		//filmovi = ucitajFilmoveIzFajla("filmovi.out");
+		//korisnici = ucitajKorisnikeIzFajla("data/korisnici");
 	}
 	
 	/**
@@ -119,5 +122,5 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	public void sacuvajKorisnikeUFajl(String fajl) {
 		SOSacuvajKorisnikeUFajl.izvrsi(korisnici, fajl);
 	}
-
+	
 }

@@ -119,7 +119,7 @@ public class Film implements Serializable{
 	 * </ul>
 	 */
 	public void setOcena(double ocena) throws RuntimeException {
-		if(ocena<1 || ocena>10) {
+		if(ocena<0 || ocena>10) {
 			throw new RuntimeException("Ocena mora biti u opsegu od 1 do 10!");
 		}
 		this.ocena = ocena;

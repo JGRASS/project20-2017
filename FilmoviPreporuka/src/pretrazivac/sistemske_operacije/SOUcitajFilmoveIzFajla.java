@@ -1,6 +1,7 @@
 package pretrazivac.sistemske_operacije;
 
 import java.io.BufferedInputStream;
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -22,18 +23,22 @@ public class SOUcitajFilmoveIzFajla {
 	 * @return vraca azuriranu listu filmmova sa filmovima iz fajla
 	 */
 	public static LinkedList<Film> izvrsi(String fajl, LinkedList<Film> filmovi){
+		LinkedList<Film> filmovi1 = new LinkedList<Film>();
 		try {
 			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(fajl)));
-			LinkedList<Film> filmovi1 = (LinkedList<Film>)(in.readObject());
-			filmovi.clear();
-			filmovi.addAll(filmovi1);
-			
+			try {
+				while(true) {
+					Film f = (Film) in.readObject();
+					filmovi1.add(f);
+				}
+			} catch (EOFException e) {}
 			in.close();
-		} catch (ClassNotFoundException e) {
-			filmovi = null;
-		} catch(Exception e){
-			throw new RuntimeException(e);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		filmovi = filmovi1;
+
 		return filmovi;
 	}
 }
