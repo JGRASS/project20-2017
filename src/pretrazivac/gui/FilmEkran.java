@@ -73,7 +73,7 @@ public class FilmEkran extends JFrame {
 	private JTextArea getTxtrDescription() {
 		if (txtrDescription == null) {
 			txtrDescription = new JTextArea();
-			String s=String.format("Godina: %d\nZanr:     %s\n\nOcena: %.2f", film.getGodina(), film.getZanr(), film.getOcena());
+			String s=String.format("Godina: %d\nZanr:     %s\n\nOcena: %.2f\nBroj pregleda: %d", film.getGodina(), film.getZanr(), film.getOcena(), film.getBrojPregleda());
 			txtrDescription.setOpaque(false);
 			txtrDescription.setText(s);
 			txtrDescription.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 21));

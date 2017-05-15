@@ -162,6 +162,7 @@ public class Login extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
+			label.setIcon(new ImageIcon(Login.class.getResource("/images/loginBack.png")));
 			label.setBounds(0, 0, 1194, 865);
 		}
 		return label;

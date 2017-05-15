@@ -63,6 +63,7 @@ public class PocetniEkran extends JFrame {
 	private JTextField txtZanr;
 	private JButton btnPretrazi;
 	private JButton btnPonistiPretragu;
+	private JLabel lblPulldown;
 
 
 
@@ -75,6 +76,7 @@ public class PocetniEkran extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.add(getLblPulldown());
 		contentPane.add(getPanel());
 		contentPane.add(getPanel_1());
 		contentPane.setBackground(new Color(29,29,40));
@@ -84,6 +86,7 @@ public class PocetniEkran extends JFrame {
 			public void mouseEntered(MouseEvent arg0) {
 				panel.setBounds(0,30,1203,835);
 				btnNapredno.setVisible(false);
+				lblPulldown.setVisible(true);
 				panel_1.setBounds(0,-85,1203,100);
 				repaint();
 				
@@ -129,6 +132,7 @@ public class PocetniEkran extends JFrame {
 				public void mouseEntered(MouseEvent arg0) {
 					panel_1.setBounds(0, 0, 1203, 100);
 					btnNapredno.setVisible(true);
+					lblPulldown.setVisible(false);
 					panel.setBounds(0,110,1203,755);
 					repaint();
 					
@@ -477,5 +481,15 @@ public class PocetniEkran extends JFrame {
 			btnPonistiPretragu.setBounds(1003, 43, 74, 37);
 		}
 		return btnPonistiPretragu;
+	}
+	private JLabel getLblPulldown() {
+		if (lblPulldown == null) {
+			lblPulldown = new JLabel("");
+			lblPulldown.setBackground(Color.GRAY);
+			lblPulldown.setHorizontalAlignment(SwingConstants.CENTER);
+			lblPulldown.setIcon(new ImageIcon(PocetniEkran.class.getResource("/javax/swing/plaf/metal/icons/sortDown.png")));
+			lblPulldown.setBounds(570, 13, 56, 16);
+		}
+		return lblPulldown;
 	}
 }
