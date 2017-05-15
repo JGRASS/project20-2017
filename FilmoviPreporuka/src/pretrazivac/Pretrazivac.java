@@ -38,7 +38,7 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	 * Konstruktor koji inicijalizuje listu filmova i korisnika na preuzete vrednosti iz fajla
 	 */
 	public Pretrazivac() {
-		//filmovi = ucitajFilmoveIzFajla("filmovi.out");
+		filmovi = ucitajFilmoveIzFajla("filmovi.out");
 		//korisnici = ucitajKorisnikeIzFajla("data/korisnici");
 	}
 	
@@ -121,6 +121,7 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	@Override
 	public void sacuvajKorisnikeUFajl(String fajl) {
 		SOSacuvajKorisnikeUFajl.izvrsi(korisnici, fajl);
+		
 	}
 	
 }
