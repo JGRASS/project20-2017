@@ -40,7 +40,7 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	 */
 	public Pretrazivac() {
 
-		filmovi = ucitajFilmoveIzFajla(Pretrazivac.class.getResource("/filmovi.out").getPath());
+		filmovi = ucitajFilmoveIzFajla("filmovi.out");
 		//korisnici = ucitajKorisnikeIzFajla("/korisnici.out");
 	}
 

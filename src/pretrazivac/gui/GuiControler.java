@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
 import javax.management.RuntimeErrorException;
@@ -55,8 +58,12 @@ public class GuiControler {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
+				
+				
 			}
 		});
+		
 	}
 	
 	public static void pokreniPocetniEkran(LinkedList<Film>filmovi){
