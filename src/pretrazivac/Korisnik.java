@@ -56,7 +56,7 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 		setUsername(username);
 		setPass(pass);
 		this.koeficijent=0;
-		this.filmovi=null;
+		this.filmovi= new LinkedList<Film>();
 	}
 	
 	public String getIme() {
