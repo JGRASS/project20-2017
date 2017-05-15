@@ -22,6 +22,8 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.SwingConstants;
 import java.awt.ComponentOrientation;
+import java.awt.event.KeyEvent;
+import java.awt.Toolkit;
 
 public class Login extends JFrame {
 
@@ -40,6 +42,10 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setForeground(Color.BLACK);
+		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
+		setTitle("BEST MOVIES 4 YOU");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1200, 900);
 		contentPane = new JPanel();
@@ -101,6 +107,7 @@ public class Login extends JFrame {
 	private JButton getButton_1() {
 		if (btnLogin == null) {
 			btnLogin = new JButton("LOGIN");
+			btnLogin.setMnemonic(KeyEvent.VK_ENTER);
 			btnLogin.setBorder(null);
 			btnLogin.setBorderPainted(false);
 			btnLogin.setForeground(Color.WHITE);
@@ -114,7 +121,7 @@ public class Login extends JFrame {
 
 				}
 			});
-			btnLogin.setBounds(535, 481, 122, 41);
+			btnLogin.setBounds(523, 482, 122, 41);
 		}
 		return btnLogin;
 	}
@@ -138,7 +145,7 @@ public class Login extends JFrame {
 					GuiControler.pokreniSignUpEkran();
 				}
 			});
-			btnSignUp.setBounds(494, 631, 208, 53);
+			btnSignUp.setBounds(496, 632, 205, 53);
 		}
 		return btnSignUp;
 	}
@@ -147,7 +154,7 @@ public class Login extends JFrame {
 			lblNoviSteKorisnik = new JLabel("Novi ste korisnik?");
 			lblNoviSteKorisnik.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));
 			lblNoviSteKorisnik.setForeground(Color.WHITE);
-			lblNoviSteKorisnik.setBounds(549, 603, 122, 16);
+			lblNoviSteKorisnik.setBounds(535, 603, 122, 16);
 		}
 		return lblNoviSteKorisnik;
 	}

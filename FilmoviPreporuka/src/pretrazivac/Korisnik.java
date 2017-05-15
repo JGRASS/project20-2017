@@ -51,10 +51,10 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 
 	public Korisnik(String ime, String prezime,String username,String pass) {
 		super();
-		this.ime=ime;
-		this.prezime=prezime;
-		this.username=username;
-		this.pass=pass;
+		setIme(ime);
+		setPrezime(prezime);
+		setUsername(username);
+		setPass(pass);
 		this.koeficijent=0;
 		this.filmovi=null;
 	}

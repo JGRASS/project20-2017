@@ -66,9 +66,12 @@ public class PocetniEkran extends JFrame {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
+			panel.setAutoscrolls(true);
+			panel.setOpaque(false);
 			panel.setBounds(0, 30, 1203, 835);
 			panel.setLayout(new BorderLayout(0, 0));
 			panel.add(getScrollPane_1(), BorderLayout.CENTER);
+
 
 		}
 		return panel;
@@ -85,7 +88,6 @@ public class PocetniEkran extends JFrame {
 			panel_1.setLayout(null);
 			panel_1.setOpaque(false);
 			panel_1.setBackground(null);
-			panel_1.setBackground(new Color(29,29,40));
 			panel_1.setBounds(0, -85, 1203, 100);
 			panel_1.addMouseListener(new MouseAdapter() {
 				@Override
@@ -105,8 +107,10 @@ public class PocetniEkran extends JFrame {
 	private JScrollPane getScrollPane_1() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
+			scrollPane.setAutoscrolls(true);
+			scrollPane.setOpaque(false);
 			scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(7, 0));
-			scrollPane.getVerticalScrollBar().setBackground(new Color(29, 29, 40));
+			scrollPane.setBackground(null);
 			scrollPane.getVerticalScrollBar().setBorder(null);
 			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 			scrollPane.setViewportView(getPanel_2());
@@ -116,16 +120,15 @@ public class PocetniEkran extends JFrame {
 	public JPanel getPanel_2() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
+			panel_2.setOpaque(true);
 			panel_2.setBackground(new Color(29, 29, 40));
-
+			panel_2.setAutoscrolls(true);
 			panel_2.setLayout(new MigLayout("insets 0, wrap 8", "0[]0","0[]0"));			
 
 		}
 		return panel_2;
 	}
-	public void isprazniPanel_2(){
-		panel_2=null;
-	}
+
 	public void dodajDugme(PristupFilmu p){
 		this.panel_2.add(p);
 		p.setVisible(true);

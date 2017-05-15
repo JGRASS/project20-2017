@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
+import pretrazivac.gui.KorisnikEkran;
 import pretrazivac.interfejsi.PretrazivacInterfejs;
 import pretrazivac.sistemske_operacije.SOPreporuci;
 import pretrazivac.sistemske_operacije.SOPretrazi;
@@ -39,7 +40,7 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	 */
 	public Pretrazivac() {
 
-		filmovi = ucitajFilmoveIzFajla("/resource/filmovi.out");
+		filmovi = ucitajFilmoveIzFajla(Pretrazivac.class.getResource("/filmovi.out").getPath());
 		//korisnici = ucitajKorisnikeIzFajla("/korisnici.out");
 	}
 		
