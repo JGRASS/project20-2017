@@ -87,6 +87,7 @@ public class Login extends JFrame {
 		if (txtUsername == null) {
 			txtUsername = new JTextField();
 			txtUsername.setOpaque(false);
+			txtUsername.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 			txtUsername.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			txtUsername.setForeground(SystemColor.textHighlightText);
 			txtUsername.setBounds(495, 323, 192, 28);

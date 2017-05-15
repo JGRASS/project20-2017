@@ -18,6 +18,7 @@ import java.awt.Color;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
@@ -48,6 +49,9 @@ public class SignUpEkran extends JFrame {
 	 * Create the frame.
 	 */
 	public SignUpEkran() {
+		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
+		setTitle("BEST MOVIES 4 YOU");
 		setBounds(100, 100, 1200, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
