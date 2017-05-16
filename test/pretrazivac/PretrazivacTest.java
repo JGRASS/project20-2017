@@ -2,20 +2,27 @@ package pretrazivac;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.LinkedList;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 import junit.framework.AssertionFailedError;
 import pretrazivac.sistemske_operacije.SOAzurirajPoGledanosti;
+import pretrazivac.sistemske_operacije.SOSacuvajKorisnikeUFajl;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
 import pretrazivac.sistemske_operacije.SOSortirajPoOceni;
 
 public class PretrazivacTest {
 	Pretrazivac p;
+	
 	@Before
 	public void setUp() throws Exception {
 		p = new Pretrazivac();
@@ -26,6 +33,7 @@ public class PretrazivacTest {
 		p=null;
 	}
 	
+
 	@Test
 	public void testUbaciKorisnika(){
 		Korisnik k = new Korisnik();
@@ -403,6 +411,49 @@ public class PretrazivacTest {
 		assertTrue(p.pretrazi(null, 0, "drama").contains(f4));
 	}
 	
+	@Test
+	public void testUcitajISacuvajKorisnikeUFajla() {
+		LinkedList<Korisnik> korisnici = new LinkedList<Korisnik>();
+		
+		LinkedList<Film> filmovi1 = new LinkedList<Film>();
+		Film f1 = new Film();
+		f1.setNaziv("La la land");
+		f1.setGodina(2016);
+		f1.setZanr("comedy, drama, music");
+		f1.setBrojPregleda(5);
+		f1.setOcena(0);
+		f1.setImagepath("/images/LaLaLand.jpg");
+		f1.setTrailerpath("https://www.youtube.com/watch?v=0pdqf4P9MB8");
+		filmovi1.add(f1);
+		Korisnik k1 = new Korisnik();
+		k1.setIme("Jovana");
+		k1.setPrezime("Mitrovic");
+		k1.setUsername("jovana");
+		k1.setPass("jovanamitrovic");
+		k1.setKoeficijent(0);
+		k1.setFilmovi(filmovi1);
+		korisnici.add(k1);
+		p.setKorisnici(korisnici);
+		p.sacuvajKorisnikeUFajl("test.out");
+		assertEquals(korisnici, p.ucitajKorisnikeIzFajla("test.out"));
+	}
+	
+	@Test
+	public void testUcitajISacuvajFilmoveUFajl() {
+		LinkedList<Film> filmovi = new LinkedList<Film>();
+		Film f1 = new Film();
+		f1.setNaziv("Taken");
+		f1.setGodina(2008);
+		f1.setBrojPregleda(0);
+		f1.setImagepath("/images/Taken.jpg");
+		f1.setOcena(0);
+		f1.setZanr("action, thriller");
+		f1.setTrailerpath("https://www.youtube.com/watch?v=uPJVJBm9TPA");
+		filmovi.add(f1);
+		p.setFilmovi(filmovi);
+		p.sacuvajFilmoveUFajl("test.out");
+		assertEquals(filmovi, p.ucitajFilmoveIzFajla("test.out"));
+	}
 
 	
 }

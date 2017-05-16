@@ -24,7 +24,9 @@ public class SOSacuvajFilmoveUFajl {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fajl)));
 			
-			out.writeObject(filmovi);
+			for (int i = 0; i < filmovi.size(); i++) {
+				out.writeObject(filmovi.get(i));
+			}
 			out.close();
 		} catch (Exception e) {
 			throw new RuntimeException(e);

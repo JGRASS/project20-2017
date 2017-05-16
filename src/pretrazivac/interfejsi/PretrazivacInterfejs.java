@@ -81,5 +81,5 @@ public interface PretrazivacInterfejs {
 	 * @param fajl naziv fajla u kome se cuvaju korisnici 
 	 */
 	public void sacuvajKorisnikeUFajl(String fajl);
-	
+	public Film azurirajDodavanjeFilma(Film f, double ocena);
 }
