@@ -20,6 +20,7 @@ import pretrazivac.Film;
 import pretrazivac.Korisnik;
 import pretrazivac.Pretrazivac;
 import pretrazivac.gui.*;
+import pretrazivac.sistemske_operacije.SOSacuvajKorisnikeUFajl;
 
 
 public class GuiControler {
@@ -111,8 +112,6 @@ public class GuiControler {
 		pe.setVisible(true);
 		ke.dispose();
 	}
-
-
 	public static void pokreniFilmEkran(Film film){
 		Boolean odgledan=false;
 		

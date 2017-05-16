@@ -454,6 +454,23 @@ public class PretrazivacTest {
 		p.sacuvajFilmoveUFajl("test.out");
 		assertEquals(filmovi, p.ucitajFilmoveIzFajla("test.out"));
 	}
+	
+	@Test
+	public void testAzurirajDodavanjeFilma(){
+		Film f1 = p.getFilmovi().get(1);
+		p.azurirajDodavanjeFilma(f1, 10);
+		int index = p.getFilmovi().indexOf(f1);
+		assertTrue(f1.getOcena()==p.getFilmovi().get(index).getOcena() && f1.getBrojPregleda()==p.getFilmovi().get(index).getBrojPregleda());
+	}
+	
+	@Test
+	public void testAzurirajDodavanjeFilmaVise(){
+		Film f1 = p.getFilmovi().get(1);
+		p.azurirajDodavanjeFilma(f1, 10);
+		p.azurirajDodavanjeFilma(f1, 8);
+		int index = p.getFilmovi().indexOf(f1);
+		assertTrue(f1.getOcena()==p.getFilmovi().get(index).getOcena() && f1.getBrojPregleda()==p.getFilmovi().get(index).getBrojPregleda());
+	}
 
 	
 }

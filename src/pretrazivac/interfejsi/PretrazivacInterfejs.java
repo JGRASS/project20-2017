@@ -81,5 +81,11 @@ public interface PretrazivacInterfejs {
 	 * @param fajl naziv fajla u kome se cuvaju korisnici 
 	 */
 	public void sacuvajKorisnikeUFajl(String fajl);
+	
+	/**
+	 * Metoda koja azurira listu filmova kada je korisnik doda u svoju listu filmova
+	 * @param f predstavlja film za koji se azuriraju podaci
+	 * @param ocena predstavlja ocenu koju je korisnik dao filmu
+	 */
 	public void azurirajDodavanjeFilma(Film f, double ocena);
 }
