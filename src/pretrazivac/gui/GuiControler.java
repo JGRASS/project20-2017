@@ -30,6 +30,7 @@ public class GuiControler {
 	private static SignUpEkran su;
 	private static Pretrazivac pr;
 	private static Korisnik ulogovanKorisnik;
+	private static GledanjeFilma glf;
 	private static LinkedList<Film> pomocna;
 
 
@@ -53,7 +54,6 @@ public class GuiControler {
 					korisnici.add(k1);
 					
 					pr=new Pretrazivac();
-					pr.setKorisnici(korisnici);
 					log= new Login();
 					log.setVisible(true);
 				} catch (Exception e) {
@@ -229,5 +229,15 @@ public class GuiControler {
 		pomocna=pr.preporuci(ulogovanKorisnik);
 		ugasiPocetniEkran();
 		pokreniPocetniEkran(pomocna);
+	}
+	
+	public static void pokreniGledanjeFilma(Film film){
+		fe.setEnabled(false);
+		glf=new GledanjeFilma(film);
+	}
+	public static void ugasiGledanjeFilma(){
+		fe.setEnabled(true);
+		glf.dispose();
+		
 	}
 }

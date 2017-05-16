@@ -226,8 +226,8 @@ public class PocetniEkran extends JFrame {
 			btnPopularnost.setBorderPainted(false);
 			btnPopularnost.setForeground(new Color(255, 255, 255));
 			btnPopularnost.setContentAreaFilled(false);
-			btnPopularnost.setIcon(new ImageIcon("E:\\data\\output\\tickets.png"));
-			btnPopularnost.setPressedIcon(new ImageIcon("E:\\data\\output\\tickets1.png"));
+			btnPopularnost.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/tickets.png")));
+			btnPopularnost.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/tickets1.png")));
 			btnPopularnost.setBounds(12, 46, 146, 41);
 			btnPopularnost.setBorderPainted(false);
 		}
@@ -241,11 +241,11 @@ public class PocetniEkran extends JFrame {
 					GuiControler.sortirajListuPoOceni();
 				}
 			});
-			btnOcena.setPressedIcon(new ImageIcon("E:\\data\\output\\frame1.png"));
+			btnOcena.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/frame1.png")));
 			btnOcena.setFocusPainted(false);
 			btnOcena.setBorderPainted(false);
 			btnOcena.setForeground(new Color(255, 255, 255));
-			btnOcena.setIcon(new ImageIcon("E:\\data\\output\\frame.png"));
+			btnOcena.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/frame.png")));
 			btnOcena.setBounds(159, 46, 105, 41);
 			btnOcena.setContentAreaFilled(false);
 
@@ -260,11 +260,11 @@ public class PocetniEkran extends JFrame {
 					GuiControler.sortirajListuPoGodini();
 				}
 			});
-			btnGodina.setPressedIcon(new ImageIcon("E:\\data\\output\\popcorn1.png"));
+			btnGodina.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/popcorn1.png")));
 			btnGodina.setFocusPainted(false);
 			btnGodina.setBorderPainted(false);
 			btnGodina.setForeground(new Color(255, 255, 255));
-			btnGodina.setIcon(new ImageIcon("E:\\data\\output\\popcorn.png"));
+			btnGodina.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/popcorn.png")));
 			btnGodina.setBounds(264, 50, 107, 33);
 			btnGodina.setContentAreaFilled(false);
 
@@ -279,11 +279,11 @@ public class PocetniEkran extends JFrame {
 					GuiControler.sortirajListuPoNazivu();
 				}
 			});
-			btnNaziv.setPressedIcon(new ImageIcon("E:\\data\\output\\clapperboard1.png"));
+			btnNaziv.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/clapperboard1.png")));
 			btnNaziv.setBorderPainted(false);
 			btnNaziv.setFocusPainted(false);
 			btnNaziv.setForeground(new Color(255, 255, 255));
-			btnNaziv.setIcon(new ImageIcon("E:\\data\\output\\clapperboard.png"));
+			btnNaziv.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/clapperboard.png")));
 			btnNaziv.setContentAreaFilled(false);
 			btnNaziv.setBounds(375, 50, 115, 33);
 		}

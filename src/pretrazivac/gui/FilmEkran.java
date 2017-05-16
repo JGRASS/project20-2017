@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class FilmEkran extends JFrame {
 	private Film film;
@@ -24,6 +26,8 @@ public class FilmEkran extends JFrame {
 	private JLabel lblBackimage;
 	private JLabel lblTitle;
 	private JTextArea txtrDescription;
+	private JButton btnGledajFilm;
+	private JButton btnTrailer;
 	/**
 	 * Create the frame
 	 */
@@ -40,6 +44,8 @@ public class FilmEkran extends JFrame {
 		contentPane.add(getLblSlika());
 		contentPane.add(getLblTitle());
 		contentPane.add(getTxtrDescription());
+		contentPane.add(getBtnGledajFilm());
+		contentPane.add(getBtnTrailer());
 		contentPane.add(getLblBackimage());
 		setResizable(false);
 	}
@@ -81,5 +87,30 @@ public class FilmEkran extends JFrame {
 			txtrDescription.setBounds(445, 222, 397, 154);
 		}
 		return txtrDescription;
+	}
+	private JButton getBtnGledajFilm() {
+		if (btnGledajFilm == null) {
+			btnGledajFilm = new JButton("GLEDAJ FILM");
+			btnGledajFilm.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
+			btnGledajFilm.setContentAreaFilled(false);
+			btnGledajFilm.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+			btnGledajFilm.setBackground(Color.DARK_GRAY);
+			btnGledajFilm.setForeground(Color.WHITE);
+			btnGledajFilm.setIcon(new ImageIcon(FilmEkran.class.getResource("/images/login.png")));
+			btnGledajFilm.setBounds(445, 619, 147, 51);
+		}
+		return btnGledajFilm;
+	}
+	private JButton getBtnTrailer() {
+		if (btnTrailer == null) {
+			btnTrailer = new JButton("Trailer");
+			btnTrailer.setContentAreaFilled(false);
+			btnTrailer.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+			btnTrailer.setIcon(new ImageIcon(FilmEkran.class.getResource("/images/clapperboard1.png")));
+			btnTrailer.setForeground(Color.LIGHT_GRAY);
+			btnTrailer.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 13));
+			btnTrailer.setBounds(445, 564, 86, 33);
+		}
+		return btnTrailer;
 	}
 }
