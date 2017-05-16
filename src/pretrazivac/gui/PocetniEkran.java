@@ -71,6 +71,7 @@ public class PocetniEkran extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 1203, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -207,9 +208,16 @@ public class PocetniEkran extends JFrame {
 			btnAccount.setFocusPainted(false);
 			btnAccount.setContentAreaFilled(false);
 			btnAccount.setBorderPainted(false);
-			btnAccount.setPressedIcon(new ImageIcon("E:\\data\\output\\account.png"));
-			btnAccount.setIcon(new ImageIcon("E:\\data\\output\\account (1).png"));
+			btnAccount.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/account.png")));
+			btnAccount.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/account (1).png")));
 			btnAccount.setBounds(1091, 13, 79, 74);
+			btnAccount.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GuiControler.pokreniKorisnikEkran();
+				}
+			});
 		}
 		return btnAccount;
 	}

@@ -209,6 +209,7 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 		 return SOSortirajPoNazivu.izvrsi(filmovi);
 	}
 	
+
 	@Override
 	public LinkedList<Film> sortirajPoGodini() {
 		return SOSortirajPoGodini.izvrsi(filmovi);

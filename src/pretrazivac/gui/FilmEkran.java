@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class FilmEkran extends JFrame {
 	private Film film;
@@ -28,10 +30,11 @@ public class FilmEkran extends JFrame {
 	private JTextArea txtrDescription;
 	private JButton btnGledajFilm;
 	private JButton btnTrailer;
+	private JLabel lblVasaocena;
 	/**
 	 * Create the frame
 	 */
-	public FilmEkran(Film film) {
+	public FilmEkran(Film film,Boolean odgledan, String vasaOcena) {
 		this.film=film;
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
@@ -44,8 +47,12 @@ public class FilmEkran extends JFrame {
 		contentPane.add(getLblSlika());
 		contentPane.add(getLblTitle());
 		contentPane.add(getTxtrDescription());
-		contentPane.add(getBtnGledajFilm());
 		contentPane.add(getBtnTrailer());
+		if(odgledan)
+			contentPane.add(getLblVasaocena(vasaOcena));
+		else
+			contentPane.add(getBtnGledajFilm());
+
 		contentPane.add(getLblBackimage());
 		setResizable(false);
 	}
@@ -79,6 +86,7 @@ public class FilmEkran extends JFrame {
 	private JTextArea getTxtrDescription() {
 		if (txtrDescription == null) {
 			txtrDescription = new JTextArea();
+			txtrDescription.setEditable(false);
 			String s=String.format("Godina: %d\nZanr:     %s\n\nOcena: %.2f\nBroj pregleda: %d", film.getGodina(), film.getZanr(), film.getOcena(), film.getBrojPregleda());
 			txtrDescription.setOpaque(false);
 			txtrDescription.setText(s);
@@ -91,6 +99,11 @@ public class FilmEkran extends JFrame {
 	private JButton getBtnGledajFilm() {
 		if (btnGledajFilm == null) {
 			btnGledajFilm = new JButton("GLEDAJ FILM");
+			btnGledajFilm.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GuiControler.pokreniGledanjeFilma(film);
+				}
+			});
 			btnGledajFilm.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
 			btnGledajFilm.setContentAreaFilled(false);
 			btnGledajFilm.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
@@ -112,5 +125,15 @@ public class FilmEkran extends JFrame {
 			btnTrailer.setBounds(445, 564, 86, 33);
 		}
 		return btnTrailer;
+	}
+	private JLabel getLblVasaocena(String vasaOcena) {
+		if (lblVasaocena == null) {
+			lblVasaocena = new JLabel("");
+			lblVasaocena.setText("Vasa ocena: "+vasaOcena);
+			lblVasaocena.setForeground(Color.WHITE);
+			lblVasaocena.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 21));
+			lblVasaocena.setBounds(445, 397, 397, 51);
+		}
+		return lblVasaocena;
 	}
 }

@@ -128,8 +128,8 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	}
 
 	@Override
-	public Film azurirajDodavanjeFilma(Film f, double ocena) {
-		return SOAzurirajDodavanjeFilma.izvrsi(f, ocena, filmovi);
+	public void azurirajDodavanjeFilma(Film f, double ocena) {
+		SOAzurirajDodavanjeFilma.izvrsi(f, ocena);
 	}
 	
 }
