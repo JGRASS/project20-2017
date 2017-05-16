@@ -55,9 +55,10 @@ public class GuiControler {
 				
 			}
 		});
-		
+
 	}
 	
+
 	public static void pokreniPocetniEkran(LinkedList<Film>filmovi){
 		pe=new PocetniEkran();
 		pe.setVisible(true);
