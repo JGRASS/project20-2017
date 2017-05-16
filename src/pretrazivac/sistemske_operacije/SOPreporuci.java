@@ -74,7 +74,9 @@ public class SOPreporuci {
 		}
 		
 		if(pomocna.isEmpty()) {
-			pomocna = filmovi;
+			for (int i = 0; i < 10; i++) {
+				pomocna.add(filmovi.get(i));
+			}
 		}
 		
 		return pomocna;
