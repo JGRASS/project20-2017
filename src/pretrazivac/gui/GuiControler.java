@@ -27,7 +27,6 @@ public class GuiControler {
 	private static PocetniEkran pe;
 	private static KorisnikEkran ke;
 	private static FilmEkran fe;
-	private static KorisnikovFilmEkran kf;
 	private static SignUpEkran su;
 	private static Pretrazivac pr;
 	private static Korisnik ulogovanKorisnik;
@@ -90,22 +89,6 @@ public class GuiControler {
 	public static void ugasiKorisnikEkran(){
 		pe.setVisible(true);
 		ke.dispose();
-	}
-	public static void pokreniKorisnikFilmEkran(){
-		kf=new KorisnikovFilmEkran();
-		kf.setVisible(true);
-		ke.setVisible(false);
-		kf.addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				ugasiKorisnikovFilmEkran();
-				
-			}
-		});
-	}
-	public static void ugasiKorisnikovFilmEkran(){
-		ke.setVisible(true);
-		kf.dispose();
 	}
 	public static void pokreniFilmEkran(Film film){
 		fe=new FilmEkran(film);
