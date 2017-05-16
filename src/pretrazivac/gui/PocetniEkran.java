@@ -72,7 +72,7 @@ public class PocetniEkran extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		setBounds(100, 0, 1200, 900);
+		setBounds(100, 0, 1200, 712);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -85,7 +85,7 @@ public class PocetniEkran extends JFrame {
 		contentPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				panel.setBounds(0,30,1203,835);
+				panel.setBounds(0,30,1203,650);
 				btnNapredno.setVisible(false);
 				lblPulldown.setVisible(true);
 				panel_1.setBounds(0,-85,1203,100);
@@ -101,7 +101,7 @@ public class PocetniEkran extends JFrame {
 			panel = new JPanel();
 			panel.setAutoscrolls(true);
 			panel.setOpaque(false);
-			panel.setBounds(0, 30, 1203, 835);
+			panel.setBounds(0, 30, 1203, 650);
 			panel.setLayout(new BorderLayout(0, 0));
 			panel.add(getScrollPane_1(), BorderLayout.CENTER);
 
@@ -134,7 +134,7 @@ public class PocetniEkran extends JFrame {
 					panel_1.setBounds(0, 0, 1203, 100);
 					btnNapredno.setVisible(true);
 					lblPulldown.setVisible(false);
-					panel.setBounds(0,110,1203,755);
+					panel.setBounds(0,110,1203,650);
 					repaint();
 					
 				}
@@ -150,7 +150,7 @@ public class PocetniEkran extends JFrame {
 			scrollPane = new JScrollPane();
 			scrollPane.setAutoscrolls(true);
 			scrollPane.setOpaque(false);
-			scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(7, 0));
+			scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(15, 0));
 			scrollPane.setBackground(null);
 			scrollPane.getVerticalScrollBar().setBorder(null);
 			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -188,20 +188,7 @@ public class PocetniEkran extends JFrame {
 		}
 		return lblImage;
 	}
-	private JButton getBtnX() {
-		if (btnX == null) {
-			btnX = new JButton("X");
-			btnX.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					GuiControler.ugasiPocetniEkran();
-					
-				}
-			});
-		}
-		return btnX;
-	}
+
 	private JButton getBtnAccount() {
 		if (btnAccount == null) {
 			btnAccount = new JButton("");
@@ -310,7 +297,7 @@ public class PocetniEkran extends JFrame {
 		if (label == null) {
 			label = new JLabel("");
 			label.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/loginBack.png")));
-			label.setBounds(0, 0, 1203, 865);
+			label.setBounds(0, 0, 1203, 680);
 		}
 		return label;
 	}

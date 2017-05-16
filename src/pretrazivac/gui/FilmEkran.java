@@ -10,6 +10,9 @@ import javax.swing.border.EmptyBorder;
 import pretrazivac.Film;
 
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -39,7 +42,7 @@ public class FilmEkran extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
-		setBounds(100, 0, 1200, 900);
+		setBounds(100, 0, 1200, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -62,7 +65,7 @@ public class FilmEkran extends JFrame {
 			lblSlika = new JLabel();
 			System.out.println("|"+film.getNaziv()+film.getImagepath());
 			lblSlika.setIcon(new ImageIcon(FilmEkran.class.getResource(film.getImagepath().substring(0, film.getImagepath().indexOf(".")) + "1.jpg")));
-			lblSlika.setBounds(183, 222, 250, 369);
+			lblSlika.setBounds(179, 156, 250, 369);
 		}
 		return lblSlika;
 	}
@@ -70,16 +73,16 @@ public class FilmEkran extends JFrame {
 		if (lblBackimage == null) {
 			lblBackimage = new JLabel("");
 			lblBackimage.setIcon(new ImageIcon(FilmEkran.class.getResource("/images/loginBack.png")));
-			lblBackimage.setBounds(0, 0, 1194, 865);
+			lblBackimage.setBounds(0, 0, 1194, 680);
 		}
 		return lblBackimage;
 	}
 	private JLabel getLblTitle() {
 		if (lblTitle == null) {
 			lblTitle = new JLabel(film.getNaziv());
-			lblTitle.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 56));
+			lblTitle.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 50));
 			lblTitle.setForeground(Color.LIGHT_GRAY);
-			lblTitle.setBounds(475, 94, 600, 86);
+			lblTitle.setBounds(475, 33, 600, 86);
 		}
 		return lblTitle;
 	}
@@ -92,7 +95,7 @@ public class FilmEkran extends JFrame {
 			txtrDescription.setText(s);
 			txtrDescription.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 21));
 			txtrDescription.setForeground(Color.WHITE);
-			txtrDescription.setBounds(445, 222, 397, 154);
+			txtrDescription.setBounds(441, 156, 397, 154);
 		}
 		return txtrDescription;
 	}
@@ -110,22 +113,43 @@ public class FilmEkran extends JFrame {
 			btnGledajFilm.setBackground(Color.DARK_GRAY);
 			btnGledajFilm.setForeground(Color.WHITE);
 			btnGledajFilm.setIcon(new ImageIcon(FilmEkran.class.getResource("/images/login.png")));
-			btnGledajFilm.setBounds(445, 619, 147, 51);
+			btnGledajFilm.setBounds(500, 520, 147, 51);
 		}
 		return btnGledajFilm;
 	}
 	private JButton getBtnTrailer() {
 		if (btnTrailer == null) {
 			btnTrailer = new JButton("Trailer");
+			try {
+				URI uri=new URI(film.getTrailerpath().substring(0, 8)+film.getTrailerpath().substring(12));
+				btnTrailer.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						open(uri);
+					}
+				});
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			btnTrailer.setContentAreaFilled(false);
 			btnTrailer.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 			btnTrailer.setIcon(new ImageIcon(FilmEkran.class.getResource("/images/clapperboard1.png")));
 			btnTrailer.setForeground(Color.LIGHT_GRAY);
 			btnTrailer.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 13));
-			btnTrailer.setBounds(445, 564, 86, 33);
+			btnTrailer.setBounds(500, 476, 86, 33);
 		}
 		return btnTrailer;
 	}
+	  private static void open(URI uri) {
+		    if (Desktop.isDesktopSupported()) {
+		      try {
+		        Desktop.getDesktop().browse(uri);
+		      } catch (IOException e) {
+		    	  /* TODO: error handling */ }
+		      }
+		  }
 	private JLabel getLblVasaocena(String vasaOcena) {
 		if (lblVasaocena == null) {
 			lblVasaocena = new JLabel("");

@@ -65,7 +65,7 @@ public class KorisnikEkran extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle(korisnik.getUsername());
-		setBounds(100, 0, 1200, 900);
+		setBounds(100, 0, 1200, 719);
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		setContentPane(contentPane);

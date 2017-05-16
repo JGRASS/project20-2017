@@ -49,7 +49,7 @@ public class Login extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 0, 1200, 900);
+		setBounds(100, 0, 1200, 750);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,7 +70,7 @@ public class Login extends JFrame {
 			lblUsername = new JLabel("Username:");
 			lblUsername.setForeground(Color.LIGHT_GRAY);
 			lblUsername.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 15));
-			lblUsername.setBounds(549, 294, 84, 16);
+			lblUsername.setBounds(564, 221, 84, 16);
 		}
 		return lblUsername;
 	}
@@ -81,7 +81,7 @@ public class Login extends JFrame {
 			pwdPassword.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			pwdPassword.setBackground(null);
 			pwdPassword.setForeground(SystemColor.textHighlightText);
-			pwdPassword.setBounds(496, 405, 191, 28);
+			pwdPassword.setBounds(511, 332, 191, 28);
 		}
 		return pwdPassword;
 	}
@@ -92,7 +92,7 @@ public class Login extends JFrame {
 			txtUsername.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 			txtUsername.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			txtUsername.setForeground(SystemColor.textHighlightText);
-			txtUsername.setBounds(495, 323, 192, 28);
+			txtUsername.setBounds(510, 250, 192, 28);
 			txtUsername.setColumns(10);
 		}
 		return txtUsername;
@@ -103,7 +103,7 @@ public class Login extends JFrame {
 			lblPassword.setBackground(Color.WHITE);
 			lblPassword.setForeground(Color.LIGHT_GRAY);
 			lblPassword.setFont(new Font("Yu Gothic UI Light", Font.BOLD, 15));
-			lblPassword.setBounds(549, 376, 84, 16);
+			lblPassword.setBounds(564, 303, 84, 16);
 		}
 		return lblPassword;
 	}
@@ -124,7 +124,7 @@ public class Login extends JFrame {
 
 				}
 			});
-			btnLogin.setBounds(523, 482, 122, 41);
+			btnLogin.setBounds(538, 409, 122, 41);
 		}
 		return btnLogin;
 	}
@@ -148,7 +148,7 @@ public class Login extends JFrame {
 					GuiControler.pokreniSignUpEkran();
 				}
 			});
-			btnSignUp.setBounds(496, 632, 205, 53);
+			btnSignUp.setBounds(511, 559, 205, 53);
 		}
 		return btnSignUp;
 	}
@@ -157,7 +157,7 @@ public class Login extends JFrame {
 			lblNoviSteKorisnik = new JLabel("Novi ste korisnik?");
 			lblNoviSteKorisnik.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 14));
 			lblNoviSteKorisnik.setForeground(Color.WHITE);
-			lblNoviSteKorisnik.setBounds(535, 603, 122, 16);
+			lblNoviSteKorisnik.setBounds(550, 530, 122, 16);
 		}
 		return lblNoviSteKorisnik;
 	}
@@ -167,7 +167,7 @@ public class Login extends JFrame {
 
 			label.setIcon(new ImageIcon(Login.class.getResource("/images/loginBack.png")));
 
-			label.setBounds(0, 0, 1194, 865);
+			label.setBounds(0, 0, 1194, 720);
 		}
 		return label;
 	}
@@ -176,7 +176,7 @@ public class Login extends JFrame {
 			lblIcon = new JLabel("");
 			lblIcon.setHorizontalAlignment(SwingConstants.CENTER);
 			lblIcon.setIcon(new ImageIcon(Login.class.getResource("/images/account (1).png")));
-			lblIcon.setBounds(549, 178, 73, 105);
+			lblIcon.setBounds(564, 105, 73, 105);
 		}
 		return lblIcon;
 	}

@@ -52,7 +52,7 @@ public class SignUpEkran extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
-		setBounds(100, 0, 1200, 900);
+		setBounds(100, 0, 1200, 720);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -81,7 +81,7 @@ public class SignUpEkran extends JFrame {
 			textField.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			textField.setOpaque(false);
 			textField.setForeground(Color.WHITE);
-			textField.setBounds(461, 344, 258, 33);
+			textField.setBounds(459, 237, 258, 33);
 			textField.setColumns(10);
 		}
 		return textField;
@@ -94,7 +94,7 @@ public class SignUpEkran extends JFrame {
 			textField_1.setOpaque(false);
 			textField_1.setForeground(Color.WHITE);
 			textField_1.setColumns(10);
-			textField_1.setBounds(461, 414, 258, 33);
+			textField_1.setBounds(459, 307, 258, 33);
 		}
 		return textField_1;
 	}
@@ -106,7 +106,7 @@ public class SignUpEkran extends JFrame {
 			textField_2.setOpaque(false);
 			textField_2.setForeground(Color.WHITE);
 			textField_2.setColumns(10);
-			textField_2.setBounds(461, 490, 258, 33);
+			textField_2.setBounds(459, 383, 258, 33);
 		}
 		return textField_2;
 	}
@@ -116,7 +116,7 @@ public class SignUpEkran extends JFrame {
 			lblUnesiteVasePodatke.setHorizontalAlignment(SwingConstants.CENTER);
 			lblUnesiteVasePodatke.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 19));
 			lblUnesiteVasePodatke.setForeground(Color.LIGHT_GRAY);
-			lblUnesiteVasePodatke.setBounds(461, 263, 258, 33);
+			lblUnesiteVasePodatke.setBounds(459, 156, 258, 33);
 		}
 		return lblUnesiteVasePodatke;
 	}
@@ -125,7 +125,7 @@ public class SignUpEkran extends JFrame {
 			lblIme = new JLabel("Ime");
 			lblIme.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
 			lblIme.setForeground(Color.LIGHT_GRAY);
-			lblIme.setBounds(461, 321, 258, 16);
+			lblIme.setBounds(459, 214, 258, 16);
 		}
 		return lblIme;
 	}
@@ -134,7 +134,7 @@ public class SignUpEkran extends JFrame {
 			lblPrezime = new JLabel("Prezime");
 			lblPrezime.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
 			lblPrezime.setForeground(Color.LIGHT_GRAY);
-			lblPrezime.setBounds(461, 390, 258, 16);
+			lblPrezime.setBounds(459, 283, 258, 16);
 		}
 		return lblPrezime;
 	}
@@ -143,7 +143,7 @@ public class SignUpEkran extends JFrame {
 			lblKorisnickoIme = new JLabel("Korisnicko ime");
 			lblKorisnickoIme.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
 			lblKorisnickoIme.setForeground(Color.LIGHT_GRAY);
-			lblKorisnickoIme.setBounds(461, 461, 258, 16);
+			lblKorisnickoIme.setBounds(459, 354, 258, 16);
 		}
 		return lblKorisnickoIme;
 	}
@@ -152,7 +152,7 @@ public class SignUpEkran extends JFrame {
 			lblSifra = new JLabel("Sifra");
 			lblSifra.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
 			lblSifra.setForeground(Color.LIGHT_GRAY);
-			lblSifra.setBounds(461, 536, 258, 16);
+			lblSifra.setBounds(459, 429, 258, 16);
 		}
 		return lblSifra;
 	}
@@ -179,7 +179,7 @@ public class SignUpEkran extends JFrame {
 				}
 			});
 			
-			btnPrikazi.setBounds(722, 565, 39, 32);
+			btnPrikazi.setBounds(720, 458, 39, 32);
 		}
 		return btnPrikazi;
 	}
@@ -187,7 +187,7 @@ public class SignUpEkran extends JFrame {
 		if (lblNewLabel == null) {
 			lblNewLabel = new JLabel("");
 			lblNewLabel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			lblNewLabel.setBounds(0, 0, 1182, 853);
+			lblNewLabel.setBounds(0, 0, 1182, 680);
 		}
 		return lblNewLabel;
 	}
@@ -220,7 +220,7 @@ public class SignUpEkran extends JFrame {
 					GuiControler.napraviNoviNalog(textField.getText(),textField_1.getText(), textField_2.getText(), passwordField.getText());
 				}
 			});
-			btnNapraviNalog.setBounds(476, 646, 229, 113);
+			btnNapraviNalog.setBounds(474, 539, 229, 113);
 		}
 		return btnNapraviNalog;
 	}
@@ -238,7 +238,7 @@ public class SignUpEkran extends JFrame {
 			passwordField.setForeground(Color.LIGHT_GRAY);
 			passwordField.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 			passwordField.setOpaque(false);
-			passwordField.setBounds(461, 565, 258, 33);
+			passwordField.setBounds(459, 458, 258, 33);
 		}
 		return passwordField;
 	}
@@ -246,7 +246,7 @@ public class SignUpEkran extends JFrame {
 		if (lblImg == null) {
 			lblImg = new JLabel("");
 			lblImg.setIcon(new ImageIcon(SignUpEkran.class.getResource("/images/newacc128.png")));
-			lblImg.setBounds(523, 120, 128, 128);
+			lblImg.setBounds(521, 13, 128, 128);
 		}
 		return lblImg;
 	}
@@ -255,7 +255,7 @@ public class SignUpEkran extends JFrame {
 			lblPwd = new JLabel("");
 			lblPwd.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 			lblPwd.setForeground(Color.WHITE);
-			lblPwd.setBounds(461, 565, 258, 33);
+			lblPwd.setBounds(459, 458, 258, 33);
 		}
 		return lblPwd;
 	}
