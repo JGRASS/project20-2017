@@ -19,6 +19,7 @@ import pretrazivac.Film;
 import pretrazivac.Korisnik;
 import pretrazivac.Pretrazivac;
 import pretrazivac.gui.*;
+import pretrazivac.sistemske_operacije.SOSacuvajKorisnikeUFajl;
 
 
 public class GuiControler {
@@ -41,19 +42,8 @@ public class GuiControler {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LinkedList<Korisnik> korisnici = new LinkedList<>();
-
-				
-					Korisnik k1 = new Korisnik();
-					k1.setIme("Ana");
-					k1.setPrezime("C");
-					k1.setPass("anacolovic");
-					k1.setUsername("anacolovic");
-					k1.setKoeficijent(0);
-					korisnici.add(k1);
-					
 					pr=new Pretrazivac();
-					pr.setKorisnici(korisnici);
+					//pr.setKorisnici(korisnici);
 					log= new Login();
 					log.setVisible(true);
 				} catch (Exception e) {
