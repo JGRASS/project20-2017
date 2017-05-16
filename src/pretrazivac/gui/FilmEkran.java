@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import pretrazivac.Film;
-import java.awt.Dimension;
+
 import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
@@ -39,7 +39,7 @@ public class FilmEkran extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
-		setBounds(100, 100, 1200, 900);
+		setBounds(100, 0, 1200, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,7 +59,7 @@ public class FilmEkran extends JFrame {
 	
 	private JLabel getLblSlika() {
 		if (lblSlika == null) {
-			lblSlika = new Slika();
+			lblSlika = new JLabel();
 			System.out.println("|"+film.getNaziv()+film.getImagepath());
 			lblSlika.setIcon(new ImageIcon(FilmEkran.class.getResource(film.getImagepath().substring(0, film.getImagepath().indexOf(".")) + "1.jpg")));
 			lblSlika.setBounds(183, 222, 250, 369);

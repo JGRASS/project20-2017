@@ -72,7 +72,7 @@ public class PocetniEkran extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		setBounds(100, 100, 1203, 900);
+		setBounds(100, 0, 1200, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -309,7 +309,7 @@ public class PocetniEkran extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
-			label.setIcon(new ImageIcon("E:\\data\\output\\loginBack.png"));
+			label.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/loginBack.png")));
 			label.setBounds(0, 0, 1203, 865);
 		}
 		return label;
