@@ -42,6 +42,7 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 	 */
 	private LinkedList<Film> filmovi;
 	
+	
 	public Korisnik() {
 		super();
 		filmovi = new LinkedList<Film>();
