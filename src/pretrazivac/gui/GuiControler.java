@@ -112,6 +112,7 @@ public class GuiControler {
 		pe.setVisible(true);
 		ke.dispose();
 	}
+
 	public static void pokreniFilmEkran(Film film){
 		Boolean odgledan=false;
 		
