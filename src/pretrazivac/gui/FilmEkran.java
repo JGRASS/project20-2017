@@ -63,7 +63,6 @@ public class FilmEkran extends JFrame {
 	private JLabel getLblSlika() {
 		if (lblSlika == null) {
 			lblSlika = new JLabel();
-			System.out.println("|"+film.getNaziv()+film.getImagepath());
 			lblSlika.setIcon(new ImageIcon(FilmEkran.class.getResource(film.getImagepath().substring(0, film.getImagepath().indexOf(".")) + "1.jpg")));
 			lblSlika.setBounds(179, 156, 250, 369);
 		}
@@ -147,7 +146,7 @@ public class FilmEkran extends JFrame {
 		      try {
 		        Desktop.getDesktop().browse(uri);
 		      } catch (IOException e) {
-		    	  /* TODO: error handling */ }
+		    	  e.printStackTrace(); }
 		      }
 		  }
 	private JLabel getLblVasaocena(String vasaOcena) {

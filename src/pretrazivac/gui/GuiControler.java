@@ -302,9 +302,6 @@ public class GuiControler {
 		g.setTrailerpath(film.getTrailerpath());
 		g.setOcena(ocena);
 		ulogovanKorisnik.dodajFilm(g);
-		for (int i = 0; i < ulogovanKorisnik.getFilmovi().size(); i++) {
-			System.out.println(ulogovanKorisnik.getFilmovi().get(i).toString());
-		}
 	}
 	public static void obrisiKorisnickiNalog(){
 		if(JOptionPane.showConfirmDialog(ke, "Da li ste sigurni da zelite da obrisete Vas nalog?", "Brisanje naloga", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
