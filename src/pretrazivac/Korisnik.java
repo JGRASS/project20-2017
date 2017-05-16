@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 import pretrazivac.interfejsi.KorisnikInterfejs;
+import pretrazivac.sistemske_operacije.SOAzurirajPoGledanosti;
 import pretrazivac.sistemske_operacije.SODodajFilm;
 import pretrazivac.sistemske_operacije.SOObrisiFilm;
 import pretrazivac.sistemske_operacije.SOPretrazi;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
+import pretrazivac.sistemske_operacije.SOSortirajPoOceni;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
 /**
  * Klasa Korisnik predstavlja domensku klasu sa privatnim atributima i odgovarajucim metodama
@@ -225,6 +227,13 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 	public String toString() {
 		return "Korisnik [ime=" + ime + ", prezime=" + prezime + ", username=" + username + "]";
 	}
+	@Override
+	public LinkedList<Film> sortirajPoOceni() {
+		return SOSortirajPoOceni.izvrsi(filmovi);
+	}
 	
-	
+	@Override
+	public LinkedList<Film> sortirajPoPopularnosti() {
+		return SOAzurirajPoGledanosti.izvrsi(filmovi);
+	}
 }

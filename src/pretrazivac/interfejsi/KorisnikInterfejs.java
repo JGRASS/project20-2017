@@ -43,5 +43,8 @@ public interface KorisnikInterfejs {
 	 * @return vraca sortiranu listu filmova
 	 */
 	public LinkedList<Film> sortirajPoGodini();
+	public LinkedList<Film> sortirajPoOceni();
+	public LinkedList<Film> sortirajPoPopularnosti();
+	
 	
 }
