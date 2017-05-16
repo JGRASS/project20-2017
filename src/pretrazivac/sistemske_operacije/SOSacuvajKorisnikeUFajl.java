@@ -22,8 +22,9 @@ public class SOSacuvajKorisnikeUFajl {
 		
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fajl)));
-			
-			out.writeObject(korisnici);
+			for (int i = 0; i < korisnici.size(); i++) {
+				out.writeObject(korisnici.get(i));
+			}
 			out.close();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
