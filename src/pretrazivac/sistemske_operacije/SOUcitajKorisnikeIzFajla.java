@@ -8,6 +8,7 @@ import java.util.LinkedList;
 
 import pretrazivac.Film;
 import pretrazivac.Korisnik;
+import pretrazivac.gui.Login;
 /**
  * Klasa koja predstavlja sistemsku operaciju za metodu ucitajKorisnikaIzFajla
  * @author Jovana Mitrovic

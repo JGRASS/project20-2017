@@ -228,8 +228,13 @@ public class PretrazivacTest {
 		p.setKorisnici(korisnici);
 		
 		LinkedList<Film> expected = new LinkedList<Film>();
-		for (int i = 0; i < 10; i++) {
-			expected.add(p.getFilmovi().get(i));
+		for (int i = 0; i < p.getFilmovi().size(); i++) {
+			if(k1.getFilmovi().contains(p.getFilmovi().get(i)) == false) {
+				expected.add(p.getFilmovi().get(i));
+			}
+			if(expected.size()==10) {
+				break;
+			}
 		}
 		assertEquals(10, p.preporuci(k1).size());
 		assertEquals(expected, p.preporuci(k1));
@@ -331,7 +336,17 @@ public class PretrazivacTest {
 		expected.add(f3);
 		expected.add(f6);
 		
-		assertEquals(expected.size(), p.preporuci(k1).size());
+		p.setFilmovi(p.azurirajPoGledanosti());
+		for (int i = 0; i < p.getFilmovi().size(); i++) {
+			if(expected.contains(p.getFilmovi().get(i))==false) {
+				expected.addLast(p.getFilmovi().get(i));
+			}
+			if(expected.size()==10) {
+				break;
+			}
+		}
+		
+		assertEquals(expected.size(),10);
 		assertEquals(expected, p.preporuci(k1));
 	}
 
@@ -472,5 +487,70 @@ public class PretrazivacTest {
 		assertTrue(f1.getOcena()==p.getFilmovi().get(index).getOcena() && f1.getBrojPregleda()==p.getFilmovi().get(index).getBrojPregleda());
 	}
 
-	
+	@Test
+	public void testResetujKoeficijente() {
+		LinkedList<Korisnik> korisnici = new LinkedList<Korisnik>();
+		LinkedList<Film> filmovi1 = new LinkedList<Film>();
+		Film f1 = new Film();
+		f1.setNaziv("La la land");
+		f1.setGodina(2016);
+		f1.setZanr("comedy, drama, music");
+		f1.setBrojPregleda(5);
+		f1.setOcena(0);
+		f1.setImagepath("/images/LaLaLand.jpg");
+		f1.setTrailerpath("https://www.youtube.com/watch?v=0pdqf4P9MB8");
+		filmovi1.add(f1);
+		Korisnik k1 = new Korisnik();
+		k1.setIme("Jovana");
+		k1.setPrezime("Mitrovic");
+		k1.setUsername("jovana");
+		k1.setPass("jovanamitrovic");
+		k1.setKoeficijent(7);
+		k1.setFilmovi(filmovi1);
+		korisnici.add(k1);
+		
+		LinkedList<Film> filmovi2 = new LinkedList<Film>();
+		Film f2 = new Film();
+		f2.setNaziv("Memento");
+		f2.setGodina(2000);
+		f2.setZanr("mystery, thriller");
+		f2.setBrojPregleda(9);
+		f2.setOcena(0);
+		f2.setImagepath("/images/Memento.jpg");
+		f2.setTrailerpath("https://www.youtube.com/watch?v=0vS0E9bBSL0");
+		filmovi2.add(f2);
+		Film f3 = new Film();
+		f3.setNaziv("Lion");
+		f3.setGodina(2016);
+		f3.setZanr("biography, drama");
+		f3.setBrojPregleda(0);
+		f3.setOcena(0);
+		f3.setImagepath("/images/Lion.jpg");
+		f3.setTrailerpath("https://www.youtube.com/watch?v=-RNI9o06vqo");
+		filmovi2.add(f3);
+		Film f4 = new Film();
+		f4.setNaziv("La la land");
+		f4.setGodina(2016);
+		f4.setZanr("comedy, drama, music");
+		f4.setBrojPregleda(5);
+		f4.setOcena(7);
+		f4.setImagepath("/images/LaLaLand.jpg");
+		f4.setTrailerpath("https://www.youtube.com/watch?v=0pdqf4P9MB8");
+		filmovi2.add(f4);
+		Korisnik k2 = new Korisnik();
+		k2.setIme("Ana");
+		k2.setPrezime("Colovic");
+		k2.setUsername("ana");
+		k2.setPass("anacolovic");
+		k2.setKoeficijent(9);
+		k2.setFilmovi(filmovi2);
+		korisnici.add(k2);
+		
+		p.setKorisnici(korisnici);
+		korisnici.get(0).setKoeficijent(0);
+		korisnici.get(1).setKoeficijent(0);
+		
+		assertEquals(korisnici, p.resetujKoeficijent());
+		
+	}
 }

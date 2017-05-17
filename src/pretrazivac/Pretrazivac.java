@@ -6,9 +6,11 @@ import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 
 import pretrazivac.gui.KorisnikEkran;
+import pretrazivac.gui.Login;
 import pretrazivac.interfejsi.PretrazivacInterfejs;
 import pretrazivac.sistemske_operacije.SOPreporuci;
 import pretrazivac.sistemske_operacije.SOPretrazi;
+import pretrazivac.sistemske_operacije.SOResetujKoeficijent;
 import pretrazivac.sistemske_operacije.SOSacuvajFilmoveUFajl;
 import pretrazivac.sistemske_operacije.SOSacuvajKorisnikeUFajl;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
@@ -130,6 +132,12 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	@Override
 	public void azurirajDodavanjeFilma(Film f, double ocena) {
 		SOAzurirajDodavanjeFilma.izvrsi(f, ocena);
+	}
+	
+	@Override
+	public LinkedList<Korisnik> resetujKoeficijent() {
+		return SOResetujKoeficijent.izvrsi(korisnici);
+		
 	}
 	
 }

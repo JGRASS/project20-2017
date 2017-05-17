@@ -12,6 +12,9 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Color;
@@ -23,6 +26,7 @@ import java.awt.Toolkit;
 import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.border.SoftBevelBorder;
 
 public class SignUpEkran extends JFrame {
 
@@ -36,28 +40,31 @@ public class SignUpEkran extends JFrame {
 	private JLabel lblKorisnickoIme;
 	private JLabel lblSifra;
 	private JButton btnPrikazi;
-	private JLabel lblNewLabel;
-	private JLabel lblUspesno;
 	private JButton btnNapraviNalog;
 	private JLabel label;
 	private JPasswordField passwordField;
 	private JLabel lblImg;
 	private JLabel lblPwd;
+	private JPanel panel;
+	private JButton button;
+	private JLabel lblBestMovies;
 
 
 	/**
 	 * Create the frame.
 	 */
 	public SignUpEkran() {
+		setUndecorated(true);
+		setResizable(false);
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
-		setBounds(100, 0, 1200, 720);
+		setBounds(100, 0, 1185, 720);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		contentPane.add(getLblNewLabel());
 		contentPane.add(getTextField());
 		contentPane.add(getTextField_1());
 		contentPane.add(getTextField_2());
@@ -71,8 +78,8 @@ public class SignUpEkran extends JFrame {
 		contentPane.add(getPasswordField_1());
 		contentPane.add(getLblPwd());
 		contentPane.add(getLblImg());
+		contentPane.add(getPanel());
 		contentPane.add(getLabel());
-		contentPane.add(getLblUspesno());
 	}
 	private JTextField getTextField() {
 		if (textField == null) {
@@ -80,8 +87,9 @@ public class SignUpEkran extends JFrame {
 			textField.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 			textField.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			textField.setOpaque(false);
+			textField.setCaretColor(Color.RED);
 			textField.setForeground(Color.WHITE);
-			textField.setBounds(459, 237, 258, 33);
+			textField.setBounds(459, 279, 258, 33);
 			textField.setColumns(10);
 		}
 		return textField;
@@ -93,8 +101,9 @@ public class SignUpEkran extends JFrame {
 			textField_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			textField_1.setOpaque(false);
 			textField_1.setForeground(Color.WHITE);
+			textField_1.setCaretColor(Color.RED);
 			textField_1.setColumns(10);
-			textField_1.setBounds(459, 307, 258, 33);
+			textField_1.setBounds(459, 349, 258, 33);
 		}
 		return textField_1;
 	}
@@ -105,8 +114,9 @@ public class SignUpEkran extends JFrame {
 			textField_2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			textField_2.setOpaque(false);
 			textField_2.setForeground(Color.WHITE);
+			textField_2.setCaretColor(Color.RED);
 			textField_2.setColumns(10);
-			textField_2.setBounds(459, 383, 258, 33);
+			textField_2.setBounds(459, 425, 258, 33);
 		}
 		return textField_2;
 	}
@@ -116,7 +126,7 @@ public class SignUpEkran extends JFrame {
 			lblUnesiteVasePodatke.setHorizontalAlignment(SwingConstants.CENTER);
 			lblUnesiteVasePodatke.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 19));
 			lblUnesiteVasePodatke.setForeground(Color.LIGHT_GRAY);
-			lblUnesiteVasePodatke.setBounds(459, 156, 258, 33);
+			lblUnesiteVasePodatke.setBounds(459, 198, 258, 33);
 		}
 		return lblUnesiteVasePodatke;
 	}
@@ -125,7 +135,7 @@ public class SignUpEkran extends JFrame {
 			lblIme = new JLabel("Ime");
 			lblIme.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
 			lblIme.setForeground(Color.LIGHT_GRAY);
-			lblIme.setBounds(459, 214, 258, 16);
+			lblIme.setBounds(459, 256, 258, 16);
 		}
 		return lblIme;
 	}
@@ -134,7 +144,7 @@ public class SignUpEkran extends JFrame {
 			lblPrezime = new JLabel("Prezime");
 			lblPrezime.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
 			lblPrezime.setForeground(Color.LIGHT_GRAY);
-			lblPrezime.setBounds(459, 283, 258, 16);
+			lblPrezime.setBounds(459, 325, 258, 16);
 		}
 		return lblPrezime;
 	}
@@ -143,7 +153,7 @@ public class SignUpEkran extends JFrame {
 			lblKorisnickoIme = new JLabel("Korisnicko ime");
 			lblKorisnickoIme.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
 			lblKorisnickoIme.setForeground(Color.LIGHT_GRAY);
-			lblKorisnickoIme.setBounds(459, 354, 258, 16);
+			lblKorisnickoIme.setBounds(459, 396, 258, 16);
 		}
 		return lblKorisnickoIme;
 	}
@@ -152,7 +162,7 @@ public class SignUpEkran extends JFrame {
 			lblSifra = new JLabel("Sifra");
 			lblSifra.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
 			lblSifra.setForeground(Color.LIGHT_GRAY);
-			lblSifra.setBounds(459, 429, 258, 16);
+			lblSifra.setBounds(459, 471, 258, 16);
 		}
 		return lblSifra;
 	}
@@ -179,31 +189,19 @@ public class SignUpEkran extends JFrame {
 				}
 			});
 			
-			btnPrikazi.setBounds(720, 458, 39, 32);
+			btnPrikazi.setBounds(720, 500, 39, 32);
 		}
 		return btnPrikazi;
 	}
-	private JLabel getLblNewLabel() {
-		if (lblNewLabel == null) {
-			lblNewLabel = new JLabel("");
-			lblNewLabel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			lblNewLabel.setBounds(0, 0, 1182, 680);
+	public void postaviPrazan(boolean sve){
+		if(sve){
+			textField.setText("");
+			textField_1.setText("");
+			textField_2.setText("");
+			passwordField.setText("");
 		}
-		return lblNewLabel;
-	}
-	public void postaviPrazan(){
-		textField_2.setText("");
-	}
-	private JLabel getLblUspesno() {
-		if (lblUspesno == null) {
-			lblUspesno = new JLabel("USPESNO STE NAPRAVILI NALOG! ");
-			lblUspesno.setFont(new Font("Yu Gothic UI Semilight", Font.BOLD, 17));
-			lblUspesno.setForeground(Color.LIGHT_GRAY);
-			lblUspesno.setVisible(false);
-			lblUspesno.setHorizontalAlignment(SwingConstants.CENTER);
-			lblUspesno.setBounds(0, 0, 1182, 853);
-		}
-		return lblUspesno;
+		else
+			textField_2.setText("");
 	}
 	private JButton getBtnNapraviNalog() {
 		if (btnNapraviNalog == null) {
@@ -220,7 +218,7 @@ public class SignUpEkran extends JFrame {
 					GuiControler.napraviNoviNalog(textField.getText(),textField_1.getText(), textField_2.getText(), passwordField.getText());
 				}
 			});
-			btnNapraviNalog.setBounds(474, 539, 229, 113);
+			btnNapraviNalog.setBounds(474, 581, 229, 113);
 		}
 		return btnNapraviNalog;
 	}
@@ -238,7 +236,16 @@ public class SignUpEkran extends JFrame {
 			passwordField.setForeground(Color.LIGHT_GRAY);
 			passwordField.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 			passwordField.setOpaque(false);
-			passwordField.setBounds(459, 458, 258, 33);
+			passwordField.setBounds(459, 500, 258, 33);
+			passwordField.setCaretColor(Color.RED);
+			passwordField.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					if(e.getKeyCode()==KeyEvent.VK_ENTER)
+						GuiControler.napraviNoviNalog(textField.getText(),textField_1.getText(), textField_2.getText(), passwordField.getText());
+
+				}
+			});
 		}
 		return passwordField;
 	}
@@ -246,7 +253,7 @@ public class SignUpEkran extends JFrame {
 		if (lblImg == null) {
 			lblImg = new JLabel("");
 			lblImg.setIcon(new ImageIcon(SignUpEkran.class.getResource("/images/newacc128.png")));
-			lblImg.setBounds(521, 13, 128, 128);
+			lblImg.setBounds(521, 55, 128, 128);
 		}
 		return lblImg;
 	}
@@ -255,8 +262,46 @@ public class SignUpEkran extends JFrame {
 			lblPwd = new JLabel("");
 			lblPwd.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 			lblPwd.setForeground(Color.WHITE);
-			lblPwd.setBounds(459, 458, 258, 33);
+			lblPwd.setBounds(459, 500, 258, 33);
 		}
 		return lblPwd;
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+			panel.setBackground(Color.DARK_GRAY);
+			panel.setBounds(0, 0, 1182, 23);
+			panel.setLayout(null);
+			panel.add(getButton());
+			panel.add(getLblBestMovies());
+		}
+		return panel;
+	}
+	private JButton getButton() {
+		if (button == null) {
+			button = new JButton("< Vrati se nazad");
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GuiControler.ugasiSignUpEkran();
+				}
+			});
+			button.setFont(new Font("Yu Gothic UI", Font.PLAIN, 12));
+			button.setForeground(Color.WHITE);
+			button.setFocusPainted(false);
+			button.setContentAreaFilled(false);
+			button.setBorderPainted(false);
+			button.setBounds(1058, 0, 124, 23);
+		}
+		return button;
+	}
+	private JLabel getLblBestMovies() {
+		if (lblBestMovies == null) {
+			lblBestMovies = new JLabel("Best movies 4 you: Napravi novi korisnicki nalog");
+			lblBestMovies.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 12));
+			lblBestMovies.setForeground(Color.LIGHT_GRAY);
+			lblBestMovies.setBounds(472, 2, 236, 18);
+		}
+		return lblBestMovies;
 	}
 }

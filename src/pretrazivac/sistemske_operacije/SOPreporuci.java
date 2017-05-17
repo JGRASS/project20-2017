@@ -42,7 +42,11 @@ public class SOPreporuci {
 			if(odstupanjeOdPreklapanja==0){
 				odstupanjeOdPreklapanja=brojac;
 			}
+			if(odstupanjeOdOcene==0){
+				korisnici.get(i).setKoeficijent(0);
+			} else{
 			korisnici.get(i).setKoeficijent(odstupanjeOdOcene/odstupanjeOdPreklapanja);
+			}
 			brojac=0;
 			odstupanjeOdOcene=0;
 			odstupanjeOdPreklapanja=0;
@@ -60,7 +64,6 @@ public class SOPreporuci {
 			}
 			
 		});
-		
 		for(int i=0;i<korisnici.size();i++){
 			for(int j=0;j<korisnici.get(i).getFilmovi().size();j++){
 				if(korisnici.get(i).getKoeficijent()!= 0 && k.getFilmovi().contains(korisnici.get(i).getFilmovi().get(j))==false
@@ -73,10 +76,16 @@ public class SOPreporuci {
 			}
 		}
 		
-		if(pomocna.isEmpty()) {
-			for (int i = 0; i < 10; i++) {
-				pomocna.add(filmovi.get(i));
-			}
+		if(pomocna.size()<10) {
+			for(int i=0;i<filmovi.size();i++){
+				if(k.getFilmovi().contains(filmovi.get(i)) || pomocna.contains(filmovi.get(i)))
+					continue;
+				else
+					pomocna.add(filmovi.get(i));
+				if(pomocna.size()==10){
+					break;
+				}
+		}
 		}
 		
 		return pomocna;

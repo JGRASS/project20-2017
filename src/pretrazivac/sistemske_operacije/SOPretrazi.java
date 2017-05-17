@@ -20,13 +20,23 @@ public class SOPretrazi {
 	 * @return vraca listu filmova u kojoj se nalaze filmovi koji odgovaraju pretrazi
 	 */
 	public static LinkedList<Film> izvrsi(String naziv, int godina, String zanr, LinkedList<Film> filmovi){
-		LinkedList<Film> pomocna = new LinkedList<>();
+		LinkedList<Film> pomocna = (LinkedList<Film>) filmovi.clone();
 		if(naziv==null || naziv.equals("")  && godina==0 && (zanr==null || zanr.equals("")))
 			return filmovi;
-		for(int i=0;i<filmovi.size();i++){
-			if(((naziv!=null && !naziv.equals("") && filmovi.get(i).getNaziv().toLowerCase().contains(naziv.toLowerCase()))) ||godina==filmovi.get(i).getGodina() || 
-					((zanr!=null && !zanr.equals("") && filmovi.get(i).getZanr().contains(zanr)))){
-				pomocna.add(filmovi.get(i));
+		for(int i=0;i<pomocna.size();i++){
+			if((naziv!=null && !naziv.equals("")) && pomocna.get(i).getNaziv().toLowerCase().contains(naziv.toLowerCase())==false){ 
+				pomocna.remove(pomocna.get(i));
+				i--;
+				continue;
+			}
+			if(godina!=0 && pomocna.get(i).getGodina()!=godina){
+				pomocna.remove(pomocna.get(i));
+				i--;
+				continue;
+			}
+			if(zanr!=null && !zanr.equals("") && !pomocna.get(i).getZanr().toLowerCase().contains(zanr.toLowerCase())){
+				pomocna.remove(pomocna.get(i));
+				i--;
 			}
 		}
 		return pomocna;

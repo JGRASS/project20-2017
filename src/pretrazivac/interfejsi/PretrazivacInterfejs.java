@@ -88,4 +88,9 @@ public interface PretrazivacInterfejs {
 	 * @param ocena predstavlja ocenu koju je korisnik dao filmu
 	 */
 	public void azurirajDodavanjeFilma(Film f, double ocena);
+	/**
+	 * Metoda koja resetuje koefecijente korisnika na vrednost 0
+	 * @return listu korisnika sa resetovanim koeficijentima za svakog korisnika iz liste
+	 */
+	public LinkedList<Korisnik> resetujKoeficijent();
 }

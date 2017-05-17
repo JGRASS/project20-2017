@@ -227,7 +227,7 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 
 	@Override
 	public String toString() {
-		return "Korisnik [ime=" + ime + ", prezime=" + prezime + ", username=" + username + "]";
+		return "Korisnik [ime=" + ime + ", prezime=" + prezime + ", username=" + username + "]" + koeficijent;
 	}
 	@Override
 	public LinkedList<Film> sortirajPoOceni() {
@@ -238,4 +238,5 @@ public class Korisnik implements KorisnikInterfejs, Serializable{
 	public LinkedList<Film> sortirajPoPopularnosti() {
 		return SOAzurirajPoGledanosti.izvrsi(filmovi);
 	}
+	
 }

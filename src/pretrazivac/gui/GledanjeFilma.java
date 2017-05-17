@@ -52,7 +52,9 @@ public class GledanjeFilma extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
-		setBounds(350, 350, 450, 300);
+		setBounds(0, 0, 450, 300);
+		setLocationRelativeTo(null);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

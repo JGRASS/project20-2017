@@ -15,6 +15,8 @@ import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
@@ -59,13 +61,20 @@ public class KorisnikEkran extends JFrame {
 	private Korisnik korisnik;
 	private JButton btnTrazi;
 	private JTextArea txtrInfo;
+	private JPanel panel_3;
+	private JButton button;
+	private JLabel lblBestMovies;
+	private JButton btnPonistipretragu;
 
 	public KorisnikEkran(Korisnik korisnik) {
+		setUndecorated(true);
 		this.korisnik=korisnik;
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle(korisnik.getUsername());
-		setBounds(100, 0, 1200, 719);
+		setBounds(0, 0, 1195, 719);
+		setLocationRelativeTo(null);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
 		setContentPane(contentPane);
@@ -94,6 +103,8 @@ public class KorisnikEkran extends JFrame {
 			panel_1.add(getBtnObrisiNalog());
 			panel_1.add(getBtnTrazi());
 			panel_1.add(getTxtrInfo());
+			panel_1.add(getPanel_3());
+			panel_1.add(getBtnPonistipretragu());
 			panel_1.add(getLblBackground());
 		}
 		return panel_1;
@@ -109,7 +120,7 @@ public class KorisnikEkran extends JFrame {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
 			panel_2.setAutoscrolls(true);
-			panel_2.setBackground(new Color(29, 29, 40));
+			panel_2.setBackground(Color.DARK_GRAY);
 			panel_2.setLayout(new MigLayout("insets 0, wrap 8", "0[]0","0[]0"));
 		}
 		return panel_2;
@@ -131,7 +142,7 @@ public class KorisnikEkran extends JFrame {
 		if (lblIcon == null) {
 			lblIcon = new JLabel("");
 			lblIcon.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/account (2).png")));
-			lblIcon.setBounds(39, 27, 128, 133);
+			lblIcon.setBounds(37, 37, 128, 133);
 		}
 		return lblIcon;
 	}
@@ -154,6 +165,16 @@ public class KorisnikEkran extends JFrame {
 			txtPretrazi.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
 			txtPretrazi.setBounds(534, 78, 264, 35);
 			txtPretrazi.setColumns(10);
+			txtPretrazi.setCaretColor(Color.RED);
+			txtPretrazi.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					if(e.getKeyCode()==KeyEvent.VK_ENTER){
+						GuiControler.pretraziKorisnikoveFilmove(txtPretrazi.getText(), 0, "");
+
+					}
+				}
+			});
 		}
 		return txtPretrazi;
 	}
@@ -295,5 +316,61 @@ public class KorisnikEkran extends JFrame {
 			txtrInfo.setBounds(179, 138, 264, 118);
 		}
 		return txtrInfo;
+	}
+	private JPanel getPanel_3() {
+		if (panel_3 == null) {
+			panel_3 = new JPanel();
+			panel_3.setBackground(Color.DARK_GRAY);
+			panel_3.setBounds(0, 0, 1194, 23);
+			panel_3.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+
+			panel_3.setLayout(null);
+			panel_3.add(getButton());
+			panel_3.add(getLblBestMovies());
+		}
+		return panel_3;
+	}
+	private JButton getButton() {
+		if (button == null) {
+			button = new JButton("< Vrati se nazad");
+			button.setFocusPainted(false);
+			button.setBorder(null);
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GuiControler.ugasiKorisnikEkran();
+				}
+			});
+			button.setContentAreaFilled(false);
+			button.setFont(new Font("Yu Gothic UI", Font.PLAIN, 12));
+			button.setForeground(Color.WHITE);
+			button.setBounds(1074, 0, 121, 23);
+		}
+		return button;
+	}
+	private JLabel getLblBestMovies() {
+		if (lblBestMovies == null) {
+			lblBestMovies = new JLabel("Best movies 4 you: Korisnicki nalog");
+			lblBestMovies.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 12));
+			lblBestMovies.setForeground(Color.LIGHT_GRAY);
+			lblBestMovies.setBounds(511, 5, 175, 14);
+		}
+		return lblBestMovies;
+	}
+	private JButton getBtnPonistipretragu() {
+		if (btnPonistipretragu == null) {
+			btnPonistipretragu = new JButton("");
+			btnPonistipretragu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GuiControler.ponistiKorisnikoveIzmene();
+					
+				}
+			});
+			btnPonistipretragu.setFocusPainted(false);
+			btnPonistipretragu.setContentAreaFilled(false);
+			btnPonistipretragu.setBorderPainted(false);
+			btnPonistipretragu.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/ponistiPretragu.png")));
+			btnPonistipretragu.setBounds(884, 87, 71, 23);
+		}
+		return btnPonistipretragu;
 	}
 }

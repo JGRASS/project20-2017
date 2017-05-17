@@ -13,6 +13,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -34,15 +35,21 @@ public class FilmEkran extends JFrame {
 	private JButton btnGledajFilm;
 	private JButton btnTrailer;
 	private JLabel lblVasaocena;
+	private LinkedList<Film> filmovi;
 	/**
 	 * Create the frame
 	 */
-	public FilmEkran(Film film,Boolean odgledan, String vasaOcena) {
+	public FilmEkran(Film film,Boolean odgledan, String vasaOcena, LinkedList<Film> filmovi) {
+		setUndecorated(true);
 		this.film=film;
+		this.filmovi=filmovi;
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
-		setBounds(100, 0, 1200, 720);
+		setBounds(0, 0, 1194, 720);
+		setLocationRelativeTo(null);
+
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -55,6 +62,30 @@ public class FilmEkran extends JFrame {
 			contentPane.add(getLblVasaocena(vasaOcena));
 		else
 			contentPane.add(getBtnGledajFilm());
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.DARK_GRAY);
+		panel.setBounds(0, 0, 1194, 23);
+		panel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JButton btnVratiSeNazad = new JButton("< Vrati se nazad");
+		btnVratiSeNazad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GuiControler.ugasiFilmEkran();
+			}
+		});
+		btnVratiSeNazad.setContentAreaFilled(false);
+		btnVratiSeNazad.setBorder(null);
+		btnVratiSeNazad.setIconTextGap(0);
+		btnVratiSeNazad.setBackground(Color.BLACK);
+		btnVratiSeNazad.setFocusPainted(false);
+		btnVratiSeNazad.setForeground(Color.WHITE);
+		btnVratiSeNazad.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
+		btnVratiSeNazad.setBounds(1066, 0, 124, 23);
+		panel.add(btnVratiSeNazad);
 
 		contentPane.add(getLblBackimage());
 		setResizable(false);
@@ -72,7 +103,7 @@ public class FilmEkran extends JFrame {
 		if (lblBackimage == null) {
 			lblBackimage = new JLabel("");
 			lblBackimage.setIcon(new ImageIcon(FilmEkran.class.getResource("/images/loginBack.png")));
-			lblBackimage.setBounds(0, 0, 1194, 680);
+			lblBackimage.setBounds(0, 0, 1194, 720);
 		}
 		return lblBackimage;
 	}
@@ -89,7 +120,10 @@ public class FilmEkran extends JFrame {
 		if (txtrDescription == null) {
 			txtrDescription = new JTextArea();
 			txtrDescription.setEditable(false);
-			String s=String.format("Godina: %d\nZanr:     %s\n\nOcena: %.2f\nBroj pregleda: %d", film.getGodina(), film.getZanr(), film.getOcena(), film.getBrojPregleda());
+			int index = filmovi.indexOf(film);
+			double ocena = filmovi.get(index).getOcena();
+			int brPregleda = filmovi.get(index).getBrojPregleda();
+			String s=String.format("Godina: %d\nZanr:     %s\n\nOcena: %.2f\nBroj pregleda: %d", film.getGodina(), film.getZanr(), ocena,brPregleda);
 			txtrDescription.setOpaque(false);
 			txtrDescription.setText(s);
 			txtrDescription.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 21));
@@ -100,7 +134,7 @@ public class FilmEkran extends JFrame {
 	}
 	private JButton getBtnGledajFilm() {
 		if (btnGledajFilm == null) {
-			btnGledajFilm = new JButton("GLEDAJ FILM");
+			btnGledajFilm = new JButton("Dodaj u listu gledanih");
 			btnGledajFilm.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					GuiControler.pokreniGledanjeFilma(film);
@@ -111,8 +145,9 @@ public class FilmEkran extends JFrame {
 			btnGledajFilm.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 			btnGledajFilm.setBackground(Color.DARK_GRAY);
 			btnGledajFilm.setForeground(Color.WHITE);
+			btnGledajFilm.setFocusPainted(false);
 			btnGledajFilm.setIcon(new ImageIcon(FilmEkran.class.getResource("/images/login.png")));
-			btnGledajFilm.setBounds(500, 520, 147, 51);
+			btnGledajFilm.setBounds(500, 520, 250, 51);
 		}
 		return btnGledajFilm;
 	}
@@ -138,6 +173,7 @@ public class FilmEkran extends JFrame {
 			btnTrailer.setForeground(Color.LIGHT_GRAY);
 			btnTrailer.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 13));
 			btnTrailer.setBounds(500, 476, 86, 33);
+			btnTrailer.setFocusPainted(false);
 		}
 		return btnTrailer;
 	}

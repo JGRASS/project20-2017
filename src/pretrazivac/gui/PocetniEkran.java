@@ -64,19 +64,25 @@ public class PocetniEkran extends JFrame {
 	private JButton btnPretrazi;
 	private JButton btnPonistiPretragu;
 	private JLabel lblPulldown;
+	private JPanel panel_3;
+	private JLabel lblBestMovies;
+	private JButton btnX_1;
 
 
 
 	public PocetniEkran() {
+		setUndecorated(true);
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		setBounds(100, 0, 1200, 712);
+		setBounds(0, 0, 1194, 700);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.add(getPanel_3());
 		contentPane.add(getLblPulldown());
 		contentPane.add(getPanel());
 		contentPane.add(getPanel_1());
@@ -85,11 +91,14 @@ public class PocetniEkran extends JFrame {
 		contentPane.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				panel.setBounds(0,30,1203,650);
+				panel.setBounds(0,50,1203,650);
+				popupMenu.setVisible(false);
+				txtGodina.setText(0+"");
+				txtZanr.setText("");
+				textField.setText("");
 				btnNapredno.setVisible(false);
 				lblPulldown.setVisible(true);
-				panel_1.setBounds(0,-85,1203,100);
-				repaint();
+				panel_1.setBounds(0,-64,1203,100);
 				
 			}
 		});
@@ -101,7 +110,7 @@ public class PocetniEkran extends JFrame {
 			panel = new JPanel();
 			panel.setAutoscrolls(true);
 			panel.setOpaque(false);
-			panel.setBounds(0, 30, 1203, 650);
+			panel.setBounds(0, 51, 1203, 650);
 			panel.setLayout(new BorderLayout(0, 0));
 			panel.add(getScrollPane_1(), BorderLayout.CENTER);
 
@@ -127,14 +136,14 @@ public class PocetniEkran extends JFrame {
 			panel_1.setLayout(null);
 			panel_1.setOpaque(false);
 			panel_1.setBackground(null);
-			panel_1.setBounds(0, -85, 1203, 100);
+			panel_1.setBounds(0, -64, 1203, 100);
 			panel_1.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseEntered(MouseEvent arg0) {
-					panel_1.setBounds(0, 0, 1203, 100);
+					panel_1.setBounds(0, 22, 1203, 100);
 					btnNapredno.setVisible(true);
 					lblPulldown.setVisible(false);
-					panel.setBounds(0,110,1203,650);
+					panel.setBounds(0,150,1203,650);
 					repaint();
 					
 				}
@@ -163,7 +172,7 @@ public class PocetniEkran extends JFrame {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
 			panel_2.setOpaque(true);
-			panel_2.setBackground(new Color(29, 29, 40));
+			panel_2.setBackground(Color.DARK_GRAY);
 			panel_2.setAutoscrolls(true);
 			panel_2.setLayout(new MigLayout("insets 0, wrap 8", "0[]0","0[]0"));			
 
@@ -192,6 +201,7 @@ public class PocetniEkran extends JFrame {
 	private JButton getBtnAccount() {
 		if (btnAccount == null) {
 			btnAccount = new JButton("");
+			btnAccount.setHorizontalTextPosition(SwingConstants.CENTER);
 			btnAccount.setFocusPainted(false);
 			btnAccount.setContentAreaFilled(false);
 			btnAccount.setBorderPainted(false);
@@ -297,7 +307,7 @@ public class PocetniEkran extends JFrame {
 		if (label == null) {
 			label = new JLabel("");
 			label.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/loginBack.png")));
-			label.setBounds(0, 0, 1203, 680);
+			label.setBounds(0, 21, 1203, 680);
 		}
 		return label;
 	}
@@ -332,6 +342,16 @@ public class PocetniEkran extends JFrame {
 			textField.setColumns(10);
 			textField.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			textField.setBounds(744, 52, 140, 28);
+			textField.setCaretColor(Color.RED);
+			textField.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					if(e.getKeyCode()==KeyEvent.VK_ENTER){
+						GuiControler.pretraziFilmove(textField.getText().toLowerCase(), Integer.parseInt(txtGodina.getText()), txtZanr.getText());
+
+					}
+				}
+			});
 		}
 		return textField;
 	}
@@ -374,16 +394,19 @@ public class PocetniEkran extends JFrame {
 			}
 			public void mouseReleased(MouseEvent e) {
 					showMenu(e);
+					
 				
 			}
 			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
+				popup.show(e.getComponent(), 0, 3);
+				
 			}
 		});
 	}
 	private JPanel getPanelNapredno() {
 		if (panelNapredno == null) {
 			panelNapredno = new JPanel();
+			panelNapredno.setBorder(null);
 			panelNapredno.setBackground(Color.BLACK);
 			panelNapredno.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 			panelNapredno.add(getLblGodina());
@@ -413,6 +436,7 @@ public class PocetniEkran extends JFrame {
 			txtGodina.setText("0");
 			txtGodina.setOpaque(false);
 			txtGodina.setForeground(Color.WHITE);
+			txtGodina.setCaretColor(Color.RED);
 			txtGodina.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			txtGodina.setColumns(10);
 		}
@@ -437,6 +461,7 @@ public class PocetniEkran extends JFrame {
 			});
 			txtZanr.setOpaque(false);
 			txtZanr.setForeground(Color.WHITE);
+			txtZanr.setCaretColor(Color.RED);
 			txtZanr.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			txtZanr.setColumns(10);
 		}
@@ -452,7 +477,7 @@ public class PocetniEkran extends JFrame {
 				}
 			});
 			btnPretrazi.setFocusPainted(false);
-			btnPretrazi.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+			btnPretrazi.setBorderPainted(false);
 			btnPretrazi.setContentAreaFilled(false);
 			btnPretrazi.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/magnifier.png")));
 			btnPretrazi.setBounds(899, 46, 41, 41);
@@ -483,8 +508,52 @@ public class PocetniEkran extends JFrame {
 			lblPulldown.setBackground(Color.GRAY);
 			lblPulldown.setHorizontalAlignment(SwingConstants.CENTER);
 			lblPulldown.setIcon(new ImageIcon(PocetniEkran.class.getResource("/javax/swing/plaf/metal/icons/sortDown.png")));
-			lblPulldown.setBounds(570, 13, 56, 16);
+			lblPulldown.setBounds(570, 34, 56, 16);
 		}
 		return lblPulldown;
+	}
+	private JPanel getPanel_3() {
+		if (panel_3 == null) {
+			panel_3 = new JPanel();
+			panel_3.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+				}
+			});
+			panel_3.setBackground(Color.DARK_GRAY);
+			panel_3.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 12));
+			panel_3.setForeground(Color.LIGHT_GRAY);
+			panel_3.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+			panel_3.setBounds(0, 0, 1200, 23);
+			panel_3.setLayout(null);
+			panel_3.add(getLblBestMovies());
+			panel_3.add(getBtnX_1());
+		}
+		return panel_3;
+	}
+	private JLabel getLblBestMovies() {
+		if (lblBestMovies == null) {
+			lblBestMovies = new JLabel("Best movies 4 you");
+			lblBestMovies.setForeground(Color.LIGHT_GRAY);
+			lblBestMovies.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 12));
+			lblBestMovies.setBounds(544, 0, 102, 23);
+		}
+		return lblBestMovies;
+	}
+	private JButton getBtnX_1() {
+		if (btnX_1 == null) {
+			btnX_1 = new JButton("X");
+			btnX_1.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GuiControler.ugasiProgram();
+				}
+			});
+			btnX_1.setContentAreaFilled(false);
+			btnX_1.setBorderPainted(false);
+			btnX_1.setFocusPainted(false);
+			btnX_1.setForeground(Color.WHITE);
+			btnX_1.setBounds(1154, 1, 46, 23);
+		}
+		return btnX_1;
 	}
 }

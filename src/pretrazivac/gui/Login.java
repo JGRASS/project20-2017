@@ -24,8 +24,13 @@ import javax.swing.SwingConstants;
 import java.awt.ComponentOrientation;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
+import javax.swing.border.SoftBevelBorder;
+import java.awt.Cursor;
 
 public class Login extends JFrame {
 
@@ -39,31 +44,44 @@ public class Login extends JFrame {
 	private JLabel lblNoviSteKorisnik;
 	private JLabel label;
 	private JLabel lblIcon;
+	private JPanel panel;
+	private JButton btnX;
 
 	/**
 	 * Create the frame.
 	 */
 	public Login() {
+		setUndecorated(true);
 		setForeground(Color.BLACK);
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
-		setTitle("BEST MOVIES 4 YOU");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 0, 1200, 750);
+		setBounds(0, 0, 1194, 720);
+		setLocationRelativeTo(null);
+		setResizable(false);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 		setContentPane(contentPane);
+		contentPane.setVisible(true);
 		contentPane.setLayout(null);
+		contentPane.add(getPanel_1());
+		contentPane.add(getTxtUsername());
 		contentPane.add(getLblIcon());
 		contentPane.add(getLblUsername());
 		contentPane.add(getPwdPassword());
-		contentPane.add(getTxtUsername());
 		contentPane.add(getLblPassword());
 		contentPane.add(getButton_1());
 		contentPane.add(getBtnSignUp());
 		contentPane.add(getLblNoviSteKorisnik());
 		contentPane.add(getLabel());
-		setResizable(false);
+		addWindowListener(new WindowAdapter() {
+			
+			@Override
+			public void windowOpened(WindowEvent e) {
+				txtUsername.requestFocusInWindow();
+			}
+
+		});
 	}
 	private JLabel getLblUsername() {
 		if (lblUsername == null) {
@@ -77,6 +95,16 @@ public class Login extends JFrame {
 	private JPasswordField getPwdPassword() {
 		if (pwdPassword == null) {
 			pwdPassword = new JPasswordField();
+			pwdPassword.addKeyListener(new KeyAdapter() {
+				@Override
+				public void keyPressed(KeyEvent e) {
+					if(e.getKeyCode()==KeyEvent.VK_ENTER){
+						GuiControler.ulogujKorisnika(txtUsername.getText(), pwdPassword.getText());
+					}
+				}
+			});
+			pwdPassword.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
+			pwdPassword.setCaretColor(Color.RED);
 			pwdPassword.setOpaque(false);
 			pwdPassword.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			pwdPassword.setBackground(null);
@@ -88,12 +116,18 @@ public class Login extends JFrame {
 	private JTextField getTxtUsername() {
 		if (txtUsername == null) {
 			txtUsername = new JTextField();
+			txtUsername.setCaretColor(Color.RED);
 			txtUsername.setOpaque(false);
 			txtUsername.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
 			txtUsername.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 			txtUsername.setForeground(SystemColor.textHighlightText);
 			txtUsername.setBounds(510, 250, 192, 28);
 			txtUsername.setColumns(10);
+			txtUsername.setVisible(true);		
+			txtUsername.requestFocusInWindow();
+
+			
+			
 		}
 		return txtUsername;
 	}
@@ -179,5 +213,40 @@ public class Login extends JFrame {
 			lblIcon.setBounds(564, 105, 73, 105);
 		}
 		return lblIcon;
+	}
+	private JPanel getPanel_1() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+			panel.setBackground(Color.DARK_GRAY);
+			panel.setBounds(0, 0, 1194, 21);
+			panel.setLayout(null);
+			panel.add(getBtnX());
+			
+			JLabel lblBestMovies = new JLabel("Best movies 4 you: Login");
+			lblBestMovies.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 12));
+			lblBestMovies.setForeground(Color.LIGHT_GRAY);
+			lblBestMovies.setBounds(534, 2, 140, 19);
+			panel.add(lblBestMovies);
+		}
+		return panel;
+	}
+	private JButton getBtnX() {
+		if (btnX == null) {
+			btnX = new JButton("X");
+			btnX.setBorderPainted(false);
+			btnX.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+			});
+			btnX.setFocusPainted(false);
+			btnX.setContentAreaFilled(false);
+			btnX.setForeground(Color.WHITE);
+			btnX.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
+			btnX.setBackground(null);
+			btnX.setBounds(1155, 0, 39, 20);
+		}
+		return btnX;
 	}
 }
