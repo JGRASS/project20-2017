@@ -32,6 +32,10 @@ import javax.swing.JMenuItem;
 import java.awt.FlowLayout;
 import javax.swing.JSplitPane;
 import java.awt.ComponentOrientation;
+import javax.swing.JScrollPane;
+import net.miginfocom.swing.MigLayout;
+import pretrazivac.Korisnik;
+import javax.swing.JTextArea;
 
 public class KorisnikEkran extends JFrame {
 
@@ -39,257 +43,257 @@ public class KorisnikEkran extends JFrame {
 	private JPanel panel;
 	private JButton btnAccount;
 	private JPanel panel_1;
-	private JButton btnPopularnost;
-	private JButton btnOcena;
-	private JButton btnGodina;
-	private JButton btnZanr;
-	private JLabel lblSortirajPo;
-	private JButton btnPreporuke;
-	private JTextField textField;
-	private JLabel lblPretrai;
-	private JButton btnNapredno;
-	private JPopupMenu popupMenu;
-	private JPanel panelNapredno;
-	private JLabel lblGodina;
-	private JTextField txtGodina;
-	private JLabel lblZanr;
-	private JTextField txtZanr;
-	private JButton btnPretrazi;
-	private JButton btnPonistiPretragu;
+	private JScrollPane scrollPane;
 	private JPanel panel_2;
+	private JLabel lblBackground;
+	private JLabel lblIcon;
+	private JLabel lblUsername;
+	private JTextField txtPretrazi;
+	private JLabel lblPretrazi;
+	private JButton btnNazivu;
+	private JButton btnOceni;
+	private JButton btnPopularnosti;
+	private JButton btnGodini;
+	private JLabel lblSortirajPo;
+	private JButton btnObrisiNalog;
+	private Korisnik korisnik;
+	private JButton btnTrazi;
+	private JTextArea txtrInfo;
 
-	public KorisnikEkran() {
+	public KorisnikEkran(Korisnik korisnik) {
+		this.korisnik=korisnik;
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
-		setTitle("BEST MOVIES 4 YOU");
-		setBounds(100, 100, 1200, 900);
+		setTitle(korisnik.getUsername());
+		setBounds(100, 0, 1200, 900);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(null);
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		contentPane.add(getPanel_1());
-		contentPane.add(getPanel_2());
+		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.add(getPanel_1_1(), BorderLayout.NORTH);
+		contentPane.add(getScrollPane(), BorderLayout.CENTER);
 
 		setResizable(false);
 	}
-
-
-	private JPanel getPanel_1() {
+	private static void addPopup(Component component, final JPopupMenu popup) {
+	}
+	private JPanel getPanel_1_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
-			panel_1.setBounds(new Rectangle(12, 0, 1203, 100));
+			panel_1.setPreferredSize(new Dimension(10, 300));
 			panel_1.setLayout(null);
-			panel_1.add(getBtnPopularnost());
-			panel_1.add(getBtnOcena());
-			panel_1.add(getBtnGodina());
-			panel_1.add(getBtnZanr());
+			panel_1.add(getLblIcon());
+			panel_1.add(getLblUsername());
+			panel_1.add(getTxtPretrazi());
+			panel_1.add(getLblPretrazi());
+			panel_1.add(getBtnNazivu());
+			panel_1.add(getBtnOceni());
+			panel_1.add(getBtnPopularnosti());
+			panel_1.add(getBtnGodini());
 			panel_1.add(getLblSortirajPo());
-			panel_1.add(getBtnPreporuke());
-			panel_1.add(getTextField());
-			panel_1.add(getLblPretrai());
-			panel_1.add(getBtnNapredno());
-			panel_1.add(getBtnPretrazi());
-			panel_1.add(getBtnPonistiPretragu());
+			panel_1.add(getBtnObrisiNalog());
+			panel_1.add(getBtnTrazi());
+			panel_1.add(getTxtrInfo());
+			panel_1.add(getLblBackground());
 		}
 		return panel_1;
 	}
-	private JButton getBtnPopularnost() {
-		if (btnPopularnost == null) {
-			btnPopularnost = new JButton("Popularnosti");
-			btnPopularnost.setContentAreaFilled(false);
-			btnPopularnost.setIcon(new ImageIcon("E:\\data\\output\\tickets.png"));
-			btnPopularnost.setBounds(12, 46, 146, 41);
+	private JScrollPane getScrollPane() {
+		if (scrollPane == null) {
+			scrollPane = new JScrollPane();
+			scrollPane.setViewportView(getPanel_2_1());
 		}
-		return btnPopularnost;
+		return scrollPane;
 	}
-	private JButton getBtnOcena() {
-		if (btnOcena == null) {
-			btnOcena = new JButton("Oceni");
-			btnOcena.setIcon(new ImageIcon("E:\\data\\output\\frame.png"));
-			btnOcena.setBounds(159, 46, 105, 41);
-			btnOcena.setContentAreaFilled(false);
-
+	private JPanel getPanel_2_1() {
+		if (panel_2 == null) {
+			panel_2 = new JPanel();
+			panel_2.setAutoscrolls(true);
+			panel_2.setBackground(new Color(29, 29, 40));
+			panel_2.setLayout(new MigLayout("insets 0, wrap 8", "0[]0","0[]0"));
 		}
-		return btnOcena;
+		return panel_2;
 	}
-	private JButton getBtnGodina() {
-		if (btnGodina == null) {
-			btnGodina = new JButton("Godini");
-			btnGodina.setIcon(new ImageIcon("E:\\data\\output\\popcorn.png"));
-			btnGodina.setBounds(264, 50, 107, 33);
-			btnGodina.setContentAreaFilled(false);
+	public void dodajDugme(PristupFilmu p){
+		this.panel_2.add(p);
+		p.setVisible(true);
 
-		}
-		return btnGodina;
 	}
-	private JButton getBtnZanr() {
-		if (btnZanr == null) {
-			btnZanr = new JButton("Zanru");
-			btnZanr.setIcon(new ImageIcon("E:\\data\\output\\clapperboard.png"));
-			btnZanr.setContentAreaFilled(false);
-
-			btnZanr.setBounds(375, 50, 105, 33);
+	private JLabel getLblBackground() {
+		if (lblBackground == null) {
+			lblBackground = new JLabel("");
+			lblBackground.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/loginBack.png")));
+			lblBackground.setBounds(0, 0, 1194, 300);
 		}
-		return btnZanr;
+		return lblBackground;
+	}
+	private JLabel getLblIcon() {
+		if (lblIcon == null) {
+			lblIcon = new JLabel("");
+			lblIcon.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/account (2).png")));
+			lblIcon.setBounds(39, 27, 128, 133);
+		}
+		return lblIcon;
+	}
+	private JLabel getLblUsername() {
+		if (lblUsername == null) {
+			lblUsername = new JLabel("");
+			lblUsername.setFont(new Font("Yu Gothic UI", Font.PLAIN, 33));
+			lblUsername.setForeground(Color.LIGHT_GRAY);
+			lblUsername.setBounds(179, 50, 255, 43);
+			lblUsername.setText(korisnik.getUsername());
+		}
+		return lblUsername;
+	}
+	private JTextField getTxtPretrazi() {
+		if (txtPretrazi == null) {
+			txtPretrazi = new JTextField();
+			txtPretrazi.setForeground(Color.WHITE);
+			txtPretrazi.setOpaque(false);
+			txtPretrazi.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+			txtPretrazi.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
+			txtPretrazi.setBounds(534, 78, 264, 35);
+			txtPretrazi.setColumns(10);
+		}
+		return txtPretrazi;
+	}
+	private JLabel getLblPretrazi() {
+		if (lblPretrazi == null) {
+			lblPretrazi = new JLabel("PRETRAZI:");
+			lblPretrazi.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
+			lblPretrazi.setForeground(Color.WHITE);
+			lblPretrazi.setBounds(534, 50, 264, 16);
+		}
+		return lblPretrazi;
+	}
+	private JButton getBtnNazivu() {
+		if (btnNazivu == null) {
+			btnNazivu = new JButton("Nazivu");
+			btnNazivu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GuiControler.sortirajKorisnikovuListuPoNazivu();
+				}
+			});
+			btnNazivu.setFocusPainted(false);
+			btnNazivu.setContentAreaFilled(false);
+			btnNazivu.setBorder(null);
+			btnNazivu.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/clapperboard.png")));
+			btnNazivu.setForeground(Color.WHITE);
+			btnNazivu.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
+			btnNazivu.setBounds(534, 198, 153, 33);
+		}
+		return btnNazivu;
+	}
+	private JButton getBtnOceni() {
+		if (btnOceni == null) {
+			btnOceni = new JButton("Oceni");
+			btnOceni.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GuiControler.sortirajKorisnikovuListuPoOceni();
+				}
+			});
+			btnOceni.setFocusPainted(false);
+			btnOceni.setContentAreaFilled(false);
+			btnOceni.setBorder(null);
+			btnOceni.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/frame.png")));
+			btnOceni.setForeground(Color.WHITE);
+			btnOceni.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
+			btnOceni.setBounds(738, 198, 103, 33);
+		}
+		return btnOceni;
+	}
+	private JButton getBtnPopularnosti() {
+		if (btnPopularnosti == null) {
+			btnPopularnosti = new JButton("Popularnosti");
+			btnPopularnosti.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GuiControler.sortirajKorisnikovuListuPoGledanosti();
+				}
+			});
+			btnPopularnosti.setFocusPainted(false);
+			btnPopularnosti.setContentAreaFilled(false);
+			btnPopularnosti.setBorder(null);
+			btnPopularnosti.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/tickets.png")));
+			btnPopularnosti.setForeground(Color.WHITE);
+			btnPopularnosti.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
+			btnPopularnosti.setBounds(534, 244, 192, 43);
+		}
+		return btnPopularnosti;
+	}
+	private JButton getBtnGodini() {
+		if (btnGodini == null) {
+			btnGodini = new JButton("Godini");
+			btnGodini.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GuiControler.sortirajKorisnikovuListuPoGodini();
+				}
+			});
+			btnGodini.setFocusPainted(false);
+			btnGodini.setContentAreaFilled(false);
+			btnGodini.setBorder(null);
+			btnGodini.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/popcorn.png")));
+			btnGodini.setForeground(Color.WHITE);
+			btnGodini.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
+			btnGodini.setBounds(738, 244, 103, 43);
+		}
+		return btnGodini;
 	}
 	private JLabel getLblSortirajPo() {
 		if (lblSortirajPo == null) {
 			lblSortirajPo = new JLabel("SORTIRAJ PO:");
-			lblSortirajPo.setBounds(37, 17, 95, 16);
+			lblSortirajPo.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
+			lblSortirajPo.setForeground(Color.WHITE);
+			lblSortirajPo.setBounds(534, 166, 264, 16);
 		}
 		return lblSortirajPo;
 	}
-	private JButton getBtnPreporuke() {
-		if (btnPreporuke == null) {
-			btnPreporuke = new JButton("");
-			btnPreporuke.addActionListener(new ActionListener() {
+	private JButton getBtnObrisiNalog() {
+		if (btnObrisiNalog == null) {
+			btnObrisiNalog = new JButton("Obrisi nalog");
+			btnObrisiNalog.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GuiControler.obrisiKorisnickiNalog();
 				}
 			});
-			btnPreporuke.setPressedIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/preporuke1.png")));
-			btnPreporuke.setFocusPainted(false);
-			btnPreporuke.setContentAreaFilled(false);
-			btnPreporuke.setBorderPainted(false);
-			btnPreporuke.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/preporuke.png")));
-			btnPreporuke.setBounds(548, 29, 151, 58);
+			btnObrisiNalog.setContentAreaFilled(false);
+			btnObrisiNalog.setOpaque(false);
+			btnObrisiNalog.setBorder(null);
+			btnObrisiNalog.setBackground(null);
+			btnObrisiNalog.setForeground(Color.WHITE);
+			btnObrisiNalog.setHorizontalTextPosition(SwingConstants.CENTER);
+			btnObrisiNalog.setVerticalTextPosition(SwingConstants.BOTTOM);
+			btnObrisiNalog.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/user.png")));
+			btnObrisiNalog.setBounds(1070, 189, 83, 85);
 		}
-		return btnPreporuke;
+		return btnObrisiNalog;
 	}
-	private JTextField getTextField() {
-		if (textField == null) {
-			textField = new JTextField();
-			textField.setOpaque(false);
-			textField.setForeground(Color.WHITE);
-			textField.setColumns(10);
-			textField.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			textField.setBounds(744, 52, 140, 28);
-		}
-		return textField;
-	}
-	private JLabel getLblPretrai() {
-		if (lblPretrai == null) {
-			lblPretrai = new JLabel("PRETRA\u017DI:");
-			lblPretrai.setForeground(Color.WHITE);
-			lblPretrai.setBounds(744, 29, 84, 16);
-		}
-		return lblPretrai;
-	}
-	private JButton getBtnNapredno() {
-		if (btnNapredno == null) {
-			btnNapredno = new JButton("Napredno");
-			btnNapredno.setFocusPainted(false);
-			btnNapredno.setVisible(false);
-			btnNapredno.setContentAreaFilled(false);
-			btnNapredno.setBorderPainted(false);
-			btnNapredno.setIcon(null);
-			btnNapredno.setHorizontalTextPosition(SwingConstants.RIGHT);
-			btnNapredno.setIconTextGap(0);
-			btnNapredno.setForeground(Color.WHITE);
-			btnNapredno.setBounds(798, 77, 101, 23);
-			addPopup(btnNapredno, getPopupMenu());
-		}
-		return btnNapredno;
-	}
-	private JPopupMenu getPopupMenu() {
-		if (popupMenu == null) {
-			popupMenu = new JPopupMenu();
-			popupMenu.add(getPanelNapredno());
-		}
-		return popupMenu;
-	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
+	private JButton getBtnTrazi() {
+		if (btnTrazi == null) {
+			btnTrazi = new JButton("");
+			btnTrazi.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GuiControler.pretraziKorisnikoveFilmove(txtPretrazi.getText(), 0, "");
 				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
-	}
-	private JPanel getPanelNapredno() {
-		if (panelNapredno == null) {
-			panelNapredno = new JPanel();
-			panelNapredno.setBackground(Color.BLACK);
-			panelNapredno.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-			panelNapredno.add(getLblGodina());
-			panelNapredno.add(getTxtGodina());
-			panelNapredno.add(getLblZanr());
-			panelNapredno.add(getTxtZanr());
+			});
+			btnTrazi.setFocusPainted(false);
+			btnTrazi.setBorderPainted(false);
+			btnTrazi.setContentAreaFilled(false);
+			btnTrazi.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/magnifier.png")));
+			btnTrazi.setBounds(810, 80, 36, 33);
 		}
-		return panelNapredno;
+		return btnTrazi;
 	}
-	private JLabel getLblGodina() {
-		if (lblGodina == null) {
-			lblGodina = new JLabel("Godina:");
-			lblGodina.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 13));
-			lblGodina.setForeground(Color.LIGHT_GRAY);
+	private JTextArea getTxtrInfo() {
+		if (txtrInfo == null) {
+			txtrInfo = new JTextArea();
+			txtrInfo.setOpaque(false);
+			txtrInfo.setEditable(false);
+			txtrInfo.setAutoscrolls(false);
+			txtrInfo.setForeground(Color.LIGHT_GRAY);
+			txtrInfo.setFont(new Font("Yu Gothic UI", Font.PLAIN, 17));
+			txtrInfo.setText(String.format("Ime: %s\nPrezime: %s\nBroj odgledanih filmova: %d", korisnik.getIme(),korisnik.getPrezime(),korisnik.getFilmovi().size()));
+			txtrInfo.setBounds(179, 138, 264, 118);
 		}
-		return lblGodina;
-	}
-	private JTextField getTxtGodina() {
-		if (txtGodina == null) {
-			txtGodina = new JTextField();
-			txtGodina.setOpaque(false);
-			txtGodina.setForeground(Color.WHITE);
-			txtGodina.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			txtGodina.setColumns(10);
-		}
-		return txtGodina;
-	}
-	private JLabel getLblZanr() {
-		if (lblZanr == null) {
-			lblZanr = new JLabel(" \u017Danr:   ");
-			lblZanr.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 13));
-			lblZanr.setForeground(Color.LIGHT_GRAY);
-		}
-		return lblZanr;
-	}
-	private JTextField getTxtZanr() {
-		if (txtZanr == null) {
-			txtZanr = new JTextField();
-			txtZanr.setOpaque(false);
-			txtZanr.setForeground(Color.WHITE);
-			txtZanr.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-			txtZanr.setColumns(10);
-		}
-		return txtZanr;
-	}
-	private JButton getBtnPretrazi() {
-		if (btnPretrazi == null) {
-			btnPretrazi = new JButton("");
-			btnPretrazi.setFocusPainted(false);
-			btnPretrazi.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-			btnPretrazi.setContentAreaFilled(false);
-			btnPretrazi.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/magnifier.png")));
-			btnPretrazi.setBounds(899, 46, 41, 41);
-		}
-		return btnPretrazi;
-	}
-	private JButton getBtnPonistiPretragu() {
-		if (btnPonistiPretragu == null) {
-			btnPonistiPretragu = new JButton("");
-			btnPonistiPretragu.setFocusPainted(false);
-			btnPonistiPretragu.setContentAreaFilled(false);
-			btnPonistiPretragu.setBorderPainted(false);
-			btnPonistiPretragu.setIcon(new ImageIcon(KorisnikEkran.class.getResource("/images/ponistiPretragu.png")));
-			btnPonistiPretragu.setBounds(1003, 43, 74, 37);
-		}
-		return btnPonistiPretragu;
-	}
-	private JPanel getPanel_2() {
-		if (panel_2 == null) {
-			panel_2 = new JPanel();
-			panel_2.setBounds(638, 181, 308, 283);
-			panel_2.setLayout(null);
-		}
-		return panel_2;
+		return txtrInfo;
 	}
 }

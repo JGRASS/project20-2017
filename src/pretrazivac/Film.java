@@ -37,7 +37,6 @@ public class Film implements Serializable{
 	 * Atribut trailerpath predstavlja putanju do trejlera filma
 	 */
 	private String trailerpath;
-	
 	/**
 	 * Metoda vraca naziv filma
 	 * @return naziv filma kao String

@@ -63,6 +63,7 @@ public class PocetniEkran extends JFrame {
 	private JTextField txtZanr;
 	private JButton btnPretrazi;
 	private JButton btnPonistiPretragu;
+	private JLabel lblPulldown;
 
 
 
@@ -70,11 +71,13 @@ public class PocetniEkran extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
-		setBounds(100, 100, 1203, 900);
+		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		setBounds(100, 0, 1200, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.add(getLblPulldown());
 		contentPane.add(getPanel());
 		contentPane.add(getPanel_1());
 		contentPane.setBackground(new Color(29,29,40));
@@ -84,6 +87,7 @@ public class PocetniEkran extends JFrame {
 			public void mouseEntered(MouseEvent arg0) {
 				panel.setBounds(0,30,1203,835);
 				btnNapredno.setVisible(false);
+				lblPulldown.setVisible(true);
 				panel_1.setBounds(0,-85,1203,100);
 				repaint();
 				
@@ -129,6 +133,7 @@ public class PocetniEkran extends JFrame {
 				public void mouseEntered(MouseEvent arg0) {
 					panel_1.setBounds(0, 0, 1203, 100);
 					btnNapredno.setVisible(true);
+					lblPulldown.setVisible(false);
 					panel.setBounds(0,110,1203,755);
 					repaint();
 					
@@ -203,9 +208,16 @@ public class PocetniEkran extends JFrame {
 			btnAccount.setFocusPainted(false);
 			btnAccount.setContentAreaFilled(false);
 			btnAccount.setBorderPainted(false);
-			btnAccount.setPressedIcon(new ImageIcon("E:\\data\\output\\account.png"));
-			btnAccount.setIcon(new ImageIcon("E:\\data\\output\\account (1).png"));
+			btnAccount.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/account.png")));
+			btnAccount.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/account (1).png")));
 			btnAccount.setBounds(1091, 13, 79, 74);
+			btnAccount.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					GuiControler.pokreniKorisnikEkran();
+				}
+			});
 		}
 		return btnAccount;
 	}
@@ -222,8 +234,8 @@ public class PocetniEkran extends JFrame {
 			btnPopularnost.setBorderPainted(false);
 			btnPopularnost.setForeground(new Color(255, 255, 255));
 			btnPopularnost.setContentAreaFilled(false);
-			btnPopularnost.setIcon(new ImageIcon("E:\\data\\output\\tickets.png"));
-			btnPopularnost.setPressedIcon(new ImageIcon("E:\\data\\output\\tickets1.png"));
+			btnPopularnost.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/tickets.png")));
+			btnPopularnost.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/tickets1.png")));
 			btnPopularnost.setBounds(12, 46, 146, 41);
 			btnPopularnost.setBorderPainted(false);
 		}
@@ -237,11 +249,11 @@ public class PocetniEkran extends JFrame {
 					GuiControler.sortirajListuPoOceni();
 				}
 			});
-			btnOcena.setPressedIcon(new ImageIcon("E:\\data\\output\\frame1.png"));
+			btnOcena.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/frame1.png")));
 			btnOcena.setFocusPainted(false);
 			btnOcena.setBorderPainted(false);
 			btnOcena.setForeground(new Color(255, 255, 255));
-			btnOcena.setIcon(new ImageIcon("E:\\data\\output\\frame.png"));
+			btnOcena.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/frame.png")));
 			btnOcena.setBounds(159, 46, 105, 41);
 			btnOcena.setContentAreaFilled(false);
 
@@ -256,11 +268,11 @@ public class PocetniEkran extends JFrame {
 					GuiControler.sortirajListuPoGodini();
 				}
 			});
-			btnGodina.setPressedIcon(new ImageIcon("E:\\data\\output\\popcorn1.png"));
+			btnGodina.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/popcorn1.png")));
 			btnGodina.setFocusPainted(false);
 			btnGodina.setBorderPainted(false);
 			btnGodina.setForeground(new Color(255, 255, 255));
-			btnGodina.setIcon(new ImageIcon("E:\\data\\output\\popcorn.png"));
+			btnGodina.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/popcorn.png")));
 			btnGodina.setBounds(264, 50, 107, 33);
 			btnGodina.setContentAreaFilled(false);
 
@@ -275,11 +287,11 @@ public class PocetniEkran extends JFrame {
 					GuiControler.sortirajListuPoNazivu();
 				}
 			});
-			btnNaziv.setPressedIcon(new ImageIcon("E:\\data\\output\\clapperboard1.png"));
+			btnNaziv.setPressedIcon(new ImageIcon(PocetniEkran.class.getResource("/images/clapperboard1.png")));
 			btnNaziv.setBorderPainted(false);
 			btnNaziv.setFocusPainted(false);
 			btnNaziv.setForeground(new Color(255, 255, 255));
-			btnNaziv.setIcon(new ImageIcon("E:\\data\\output\\clapperboard.png"));
+			btnNaziv.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/clapperboard.png")));
 			btnNaziv.setContentAreaFilled(false);
 			btnNaziv.setBounds(375, 50, 115, 33);
 		}
@@ -297,7 +309,7 @@ public class PocetniEkran extends JFrame {
 	private JLabel getLabel() {
 		if (label == null) {
 			label = new JLabel("");
-			label.setIcon(new ImageIcon("E:\\data\\output\\loginBack.png"));
+			label.setIcon(new ImageIcon(PocetniEkran.class.getResource("/images/loginBack.png")));
 			label.setBounds(0, 0, 1203, 865);
 		}
 		return label;
@@ -477,5 +489,15 @@ public class PocetniEkran extends JFrame {
 			btnPonistiPretragu.setBounds(1003, 43, 74, 37);
 		}
 		return btnPonistiPretragu;
+	}
+	private JLabel getLblPulldown() {
+		if (lblPulldown == null) {
+			lblPulldown = new JLabel("");
+			lblPulldown.setBackground(Color.GRAY);
+			lblPulldown.setHorizontalAlignment(SwingConstants.CENTER);
+			lblPulldown.setIcon(new ImageIcon(PocetniEkran.class.getResource("/javax/swing/plaf/metal/icons/sortDown.png")));
+			lblPulldown.setBounds(570, 13, 56, 16);
+		}
+		return lblPulldown;
 	}
 }

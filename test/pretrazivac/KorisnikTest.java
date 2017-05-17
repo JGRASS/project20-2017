@@ -411,4 +411,83 @@ public class KorisnikTest {
 		assertTrue(k.equals(korisnik));
 	}
 	
+	@Test
+	public void testSortirajPoOceni(){
+		Film f1 = new Film();
+		f1.setNaziv("Taken");
+		f1.setGodina(2016);
+		f1.setBrojPregleda(1);
+		f1.setImagepath("/data/filmovi.dat");
+		f1.setOcena(6);
+		f1.setZanr("triler");
+		f1.setTrailerpath("/data/filmovi.dat");
+		k.dodajFilm(f1);
+		
+		Film f2 = new Film();
+		f2.setNaziv("Horror");
+		f2.setGodina(2003);
+		f2.setBrojPregleda(1);
+		f2.setImagepath("/data/filmovi.dat");
+		f2.setOcena(9);
+		f2.setZanr("horor");
+		f2.setTrailerpath("/data/filmovi.dat");
+		k.dodajFilm(f2);
+		
+		Film f3 = new Film();
+		f3.setNaziv("Love");
+		f3.setGodina(2014);
+		f3.setBrojPregleda(1);
+		f3.setImagepath("/data/filmovi.dat");
+		f3.setOcena(10);
+		f3.setZanr("komedija");
+		f3.setTrailerpath("/data/filmovi.dat");
+		k.dodajFilm(f3);
+		
+		Film[] filmovi = new Film[3];
+		filmovi[0]=k.sortirajPoOceni().get(0);
+		filmovi[1]=k.sortirajPoOceni().get(1);
+		filmovi[2]=k.sortirajPoOceni().get(2);
+		
+		assertArrayEquals(new Film[]{f3,f2,f1}, filmovi);
+	}
+	
+	@Test
+	public void testSortirajPoPopularnosti(){
+		Film f1 = new Film();
+		f1.setNaziv("Taken");
+		f1.setGodina(2016);
+		f1.setBrojPregleda(11);
+		f1.setImagepath("/data/filmovi.dat");
+		f1.setOcena(6);
+		f1.setZanr("triler");
+		f1.setTrailerpath("/data/filmovi.dat");
+		k.dodajFilm(f1);
+		
+		Film f2 = new Film();
+		f2.setNaziv("Horror");
+		f2.setGodina(2003);
+		f2.setBrojPregleda(5);
+		f2.setImagepath("/data/filmovi.dat");
+		f2.setOcena(9);
+		f2.setZanr("horor");
+		f2.setTrailerpath("/data/filmovi.dat");
+		k.dodajFilm(f2);
+		
+		Film f3 = new Film();
+		f3.setNaziv("Love");
+		f3.setGodina(2014);
+		f3.setBrojPregleda(14);
+		f3.setImagepath("/data/filmovi.dat");
+		f3.setOcena(6);
+		f3.setZanr("komedija");
+		f3.setTrailerpath("/data/filmovi.dat");
+		k.dodajFilm(f3);
+		
+		Film[] filmovi = new Film[3];
+		filmovi[0]=k.sortirajPoPopularnosti().get(0);
+		filmovi[1]=k.sortirajPoPopularnosti().get(1);
+		filmovi[2]=k.sortirajPoPopularnosti().get(2);
+		
+		assertArrayEquals(new Film[]{f3,f1,f2}, filmovi);
+	}
 }

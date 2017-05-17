@@ -12,6 +12,7 @@ import pretrazivac.sistemske_operacije.SOPretrazi;
 import pretrazivac.sistemske_operacije.SOSacuvajFilmoveUFajl;
 import pretrazivac.sistemske_operacije.SOSacuvajKorisnikeUFajl;
 import pretrazivac.sistemske_operacije.SOSortirajPoNazivu;
+import pretrazivac.sistemske_operacije.SOAzurirajDodavanjeFilma;
 import pretrazivac.sistemske_operacije.SOAzurirajPoGledanosti;
 import pretrazivac.sistemske_operacije.SOIzbaciKorisnika;
 import pretrazivac.sistemske_operacije.SOSortirajPoGodini;
@@ -124,6 +125,11 @@ public class Pretrazivac implements PretrazivacInterfejs{
 	public void sacuvajKorisnikeUFajl(String fajl) {
 		SOSacuvajKorisnikeUFajl.izvrsi(korisnici, fajl);
 		
+	}
+
+	@Override
+	public void azurirajDodavanjeFilma(Film f, double ocena) {
+		SOAzurirajDodavanjeFilma.izvrsi(f, ocena);
 	}
 	
 }

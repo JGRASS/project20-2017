@@ -13,12 +13,14 @@ import java.util.LinkedList;
 
 import javax.management.RuntimeErrorException;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import pretrazivac.Film;
 import pretrazivac.Korisnik;
 import pretrazivac.Pretrazivac;
 import pretrazivac.gui.*;
+import pretrazivac.sistemske_operacije.SOSacuvajKorisnikeUFajl;
 
 
 public class GuiControler {
@@ -29,7 +31,9 @@ public class GuiControler {
 	private static SignUpEkran su;
 	private static Pretrazivac pr;
 	private static Korisnik ulogovanKorisnik;
+	private static GledanjeFilma glf;
 	private static LinkedList<Film> pomocna;
+	private static LinkedList<Film> pomocnaKorisnik;
 
 
 
@@ -40,19 +44,7 @@ public class GuiControler {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LinkedList<Korisnik> korisnici = new LinkedList<>();
-
-				
-					Korisnik k1 = new Korisnik();
-					k1.setIme("Ana");
-					k1.setPrezime("C");
-					k1.setPass("anacolovic");
-					k1.setUsername("anacolovic");
-					k1.setKoeficijent(0);
-					korisnici.add(k1);
-					
 					pr=new Pretrazivac();
-					pr.setKorisnici(korisnici);
 					log= new Login();
 					log.setVisible(true);
 				} catch (Exception e) {
@@ -74,7 +66,12 @@ public class GuiControler {
 		pe.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				ugasiPocetniEkran();
+				if(JOptionPane.showConfirmDialog(pe, "Da li zelite da izadjete iz aplikacije?", "LOGOUT", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+					pr.sacuvajFilmoveUFajl("filmovi.out");
+					pr.sacuvajKorisnikeUFajl("korisnici.out");
+					log.setVisible(true);
+					pe.dispose();
+				}
 				
 			}
 		});
@@ -83,9 +80,10 @@ public class GuiControler {
 	public static void ugasiPocetniEkran(){
 		log.setVisible(true);
 		pe.dispose();
+		
 	}
 	public static void pokreniKorisnikEkran(){
-		ke=new KorisnikEkran();
+		ke=new KorisnikEkran(ulogovanKorisnik);
 		ke.setVisible(true);
 		pe.setVisible(false);
 		ke.addWindowListener(new WindowAdapter() {
@@ -95,15 +93,30 @@ public class GuiControler {
 				
 			}
 		});
+		napuniKorisnikovPanelFilmovima(ulogovanKorisnik.getFilmovi());
+	}
+	public static void pokreniKorisnikEkran(LinkedList<Film>filmovi){
+		ke=new KorisnikEkran(ulogovanKorisnik);
+		ke.setVisible(true);
+		pe.setVisible(false);
+		ke.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				ugasiKorisnikEkran();
+				
+			}
+		});
+		napuniKorisnikovPanelFilmovima(filmovi);
 	}
 	public static void ugasiKorisnikEkran(){
 		pe.setVisible(true);
 		ke.dispose();
 	}
 
-
 	public static void pokreniFilmEkran(Film film){
-		fe=new FilmEkran(film);
+		Boolean odgledan=false;
+		
+		fe=new FilmEkran(film,ulogovanKorisnik.getFilmovi().contains(film)?true:false,ulogovanKorisnik.getFilmovi().contains(film)?ulogovanKorisnik.getFilmovi().get(ulogovanKorisnik.getFilmovi().indexOf(film)).getOcena()+"":"");
 		fe.setVisible(true);
 		pe.setVisible(false);
 		fe.addWindowListener(new WindowAdapter() {
@@ -115,7 +128,8 @@ public class GuiControler {
 		});
 	}
 	public static void ugasiFilmEkran(){
-		pe.setVisible(true);
+		pe.dispose();
+		pokreniPocetniEkran(pr.getFilmovi());
 		fe.dispose();
 	}
 	public static void pokreniSignUpEkran(){
@@ -181,6 +195,18 @@ public class GuiControler {
 		}
 		
 	}
+	public static void napuniKorisnikovPanelFilmovima(LinkedList<Film> filmovi){
+		for(int i=0;i<filmovi.size();i++){
+			PristupFilmu d=new PristupFilmu(filmovi.get(i));
+			d.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pokreniFilmEkran(d.getFilm());
+				}
+			});
+			ke.dodajDugme(d);
+		}
+		
+	}
 	public static void sortirajListuPoGledanosti(){
 		pr.setFilmovi(pr.azurirajPoGledanosti());
 		ugasiPocetniEkran();
@@ -201,8 +227,32 @@ public class GuiControler {
 		ugasiPocetniEkran();
 		pokreniPocetniEkran(pr.getFilmovi());
 	}
+	public static void sortirajKorisnikovuListuPoGledanosti(){
+		ulogovanKorisnik.setFilmovi(ulogovanKorisnik.sortirajPoPopularnosti());
+		ugasiKorisnikEkran();
+		pokreniKorisnikEkran(ulogovanKorisnik.getFilmovi());
+	}
+	public static void sortirajKorisnikovuListuPoNazivu(){
+		ulogovanKorisnik.setFilmovi(ulogovanKorisnik.sortirajPoNazivu());
+		ugasiKorisnikEkran();
+		pokreniKorisnikEkran(ulogovanKorisnik.getFilmovi());
+	}
+	public static void sortirajKorisnikovuListuPoGodini(){
+		ulogovanKorisnik.setFilmovi(ulogovanKorisnik.sortirajPoGodini());
+		ugasiKorisnikEkran();
+		pokreniKorisnikEkran(ulogovanKorisnik.getFilmovi());
+	}
+	public static void sortirajKorisnikovuListuPoOceni(){
+		ulogovanKorisnik.setFilmovi(ulogovanKorisnik.sortirajPoOceni());
+		ugasiKorisnikEkran();
+		pokreniKorisnikEkran(ulogovanKorisnik.getFilmovi());
+	}
 	public static void pretraziFilmove(String naziv, int godina, String zanr){
 		pomocna=pr.pretrazi(naziv, godina, zanr);
+		if(pomocna.isEmpty()){
+			JOptionPane.showMessageDialog(pe, "Nema rezultata za tu pretragu","Nema rezultata", JOptionPane.OK_OPTION);
+			return;
+		}
 		ugasiPocetniEkran();
 		pokreniPocetniEkran(pomocna);
 	}
@@ -210,9 +260,60 @@ public class GuiControler {
 		ugasiPocetniEkran();
 		pokreniPocetniEkran(pr.getFilmovi());
 	}
+	public static void pretraziKorisnikoveFilmove(String naziv, int godina, String zanr){
+		pomocnaKorisnik=ulogovanKorisnik.pretrazi(naziv, godina, zanr);
+		if(pomocnaKorisnik.isEmpty()){
+			JOptionPane.showMessageDialog(pe, "Nema rezultata za tu pretragu","Nema rezultata", JOptionPane.OK_OPTION);
+			return;
+		}
+		ugasiKorisnikEkran();
+		pokreniKorisnikEkran(pomocnaKorisnik);
+	}
+	public static void ponistiKorisnikoveIzmene(){
+		ugasiKorisnikEkran();
+		pokreniKorisnikEkran(ulogovanKorisnik.getFilmovi());
+	}
 	public static void preporuciFilmove(){
 		pomocna=pr.preporuci(ulogovanKorisnik);
 		ugasiPocetniEkran();
 		pokreniPocetniEkran(pomocna);
+	}
+	
+	public static void pokreniGledanjeFilma(Film film){
+		fe.setEnabled(false);
+		glf=new GledanjeFilma(film);
+	}
+	
+	public static void ugasiGledanjeFilma(){
+		ugasiFilmEkran();
+		glf.dispose();
+		
+	}
+	public static void azurirajFilm(Film film,Double ocena){
+		pr.azurirajDodavanjeFilma(film, ocena);
+	}
+	public static void dodajKorisnikuFilm(Film film, double ocena){
+		Film g=new Film();
+		g.setNaziv(film.getNaziv());
+		g.setBrojPregleda(film.getBrojPregleda());
+		g.setImagepath(film.getImagepath());
+		g.setZanr(film.getZanr());
+		g.setGodina(film.getGodina());
+		g.setTrailerpath(film.getTrailerpath());
+		g.setOcena(ocena);
+		ulogovanKorisnik.dodajFilm(g);
+		for (int i = 0; i < ulogovanKorisnik.getFilmovi().size(); i++) {
+			System.out.println(ulogovanKorisnik.getFilmovi().get(i).toString());
+		}
+	}
+	public static void obrisiKorisnickiNalog(){
+		if(JOptionPane.showConfirmDialog(ke, "Da li ste sigurni da zelite da obrisete Vas nalog?", "Brisanje naloga", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+		pr.izbaciKorsnika(ulogovanKorisnik);
+		log.setVisible(true);
+		ke.dispose();
+		pr.sacuvajFilmoveUFajl("filmovi.out");
+		pr.sacuvajKorisnikeUFajl("korisnici.out");
+		pr=new Pretrazivac();
+		}
 	}
 }
