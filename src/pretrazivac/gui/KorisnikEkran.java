@@ -24,6 +24,7 @@ import java.awt.Insets;
 import javax.swing.border.MatteBorder;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.JPopupMenu;
@@ -72,7 +73,7 @@ public class KorisnikEkran extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle(korisnik.getUsername());
-		setBounds(0, 0, 1195, 719);
+		setBounds(0, 0, 1194, 720);
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();
@@ -113,6 +114,7 @@ public class KorisnikEkran extends JFrame {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
 			scrollPane.setViewportView(getPanel_2_1());
+			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		}
 		return scrollPane;
 	}
@@ -341,7 +343,7 @@ public class KorisnikEkran extends JFrame {
 				}
 			});
 			button.setContentAreaFilled(false);
-			button.setFont(new Font("Yu Gothic UI", Font.PLAIN, 12));
+			button.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 1));
 			button.setForeground(Color.WHITE);
 			button.setBounds(1074, 0, 121, 23);
 		}

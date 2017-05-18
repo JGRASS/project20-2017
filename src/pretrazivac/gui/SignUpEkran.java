@@ -59,7 +59,7 @@ public class SignUpEkran extends JFrame {
 		setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/images/clapperboard.png")));
 		setTitle("BEST MOVIES 4 YOU");
-		setBounds(100, 0, 1185, 720);
+		setBounds(100, 0, 1194, 720);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -226,7 +226,7 @@ public class SignUpEkran extends JFrame {
 		if (label == null) {
 			label = new JLabel("");
 			label.setIcon(new ImageIcon(SignUpEkran.class.getResource("/images/loginBack.png")));
-			label.setBounds(0, 0, 1182, 853);
+			label.setBounds(0, 0, 1194, 720);
 		}
 		return label;
 	}
@@ -271,7 +271,7 @@ public class SignUpEkran extends JFrame {
 			panel = new JPanel();
 			panel.setBorder(new SoftBevelBorder(BevelBorder.RAISED, null, null, null, null));
 			panel.setBackground(Color.DARK_GRAY);
-			panel.setBounds(0, 0, 1182, 23);
+			panel.setBounds(0, 0, 1194, 23);
 			panel.setLayout(null);
 			panel.add(getButton());
 			panel.add(getLblBestMovies());
@@ -286,12 +286,12 @@ public class SignUpEkran extends JFrame {
 					GuiControler.ugasiSignUpEkran();
 				}
 			});
-			button.setFont(new Font("Yu Gothic UI", Font.PLAIN, 12));
+			button.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 14));
 			button.setForeground(Color.WHITE);
 			button.setFocusPainted(false);
 			button.setContentAreaFilled(false);
 			button.setBorderPainted(false);
-			button.setBounds(1058, 0, 124, 23);
+			button.setBounds(1060, 0, 145, 23);
 		}
 		return button;
 	}
